@@ -1,7 +1,7 @@
 export function SingUpPage(){
     return (
     <> 
-        Ta no Cadastro
+        Ta no Cadastro, EM CONSTRUÇÃO...
     </>
     )
 }
