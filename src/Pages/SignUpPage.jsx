@@ -13,7 +13,7 @@ export function SingUpPage(){
         <Navbar/>
 
         <form className="form">
-            <h3>Entre com sua conta</h3>
+            <h3>Se cadastre</h3>
             <input type="text" name="nome" placeholder="Seu nome" />
             <input type="text" name="email" placeholder="Seu email"/>
             <input type="password" name="senha" placeholder="Sua senha" />
