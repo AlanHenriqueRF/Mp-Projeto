@@ -1,19 +1,25 @@
-import { styled } from "styled-components"
+
+import Navbar from "../Components/Navbar"
+import "../Styles/signIn-up.css"
 
 export function SingInPage(){
     return (
     <>
-        <Div>Ta no login, EM CONSTRUÇÃO...</Div>
+        <Navbar />
+        <form className="form">
+            <h3>Entre com sua conta</h3>
+            <input type="text" name="email" placeholder="Seu email"/>
+            <input type="password" name="senha" placeholder="Sua senha" />
+            <input type="submit" name="acao" value="Enviar" />
+        </form>
+
+        <footer className="footer">
+            <div className="footer-content">
+                <h4>Não tem conta? <a href="SingUp">Registre-se</a> </h4>
+            </div>
+            
+        </footer>
+        
     </>
     )
 }
-
-
-const Div = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    font-size: 32px;
-    font-weight: 600;
-`
