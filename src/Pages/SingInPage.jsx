@@ -1,4 +1,5 @@
 
+import { Link } from "react-router-dom"
 import Navbar from "../Components/Navbar"
 import "../Styles/signIn-up.css"
 
@@ -15,7 +16,7 @@ export function SingInPage(){
 
         <footer className="footer">
             <div className="footer-content">
-                <h4>Não tem conta? <a href="SingUp">Registre-se</a> </h4>
+                <h4>Não tem conta? <Link to={"/SingUp"}>Registre-se</Link> </h4>
             </div>
             
         </footer>
