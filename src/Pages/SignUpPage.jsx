@@ -10,13 +10,18 @@ export function SingUpPage() {
         setShowRestaurantFields(selectedRole === "Restaurante");
     }
 
+    let nome = "Seu nome"
+    if (showRestaurantFields){
+        nome = "Nome do restaurante"
+    }
+
     return (
         <>
             <Navbar />
 
-            <form className="form">
+            <form className="form" action="http://127.0.0.1:5000/cadastro" method="POST">
                 <h3>Se cadastre</h3>
-                <input type="text" name="nome" placeholder="Seu nome" />
+                <input type="text" name="nome" placeholder={nome} />
                 <input type="text" name="email" placeholder="Seu email" />
                 <input type="password" name="senha" placeholder="Sua senha" />
 
@@ -28,7 +33,7 @@ export function SingUpPage() {
                 )}
 
                 <h4>Função</h4>
-                <select name="Função" onChange={handleRoleChange}>
+                <select name="funcao" onChange={handleRoleChange}>
                     <option value="">Escolha uma opção</option>
                     <option value="Restaurante">Restaurante</option>
                     <option value="Pessoa Fisica">Pessoa Fisica</option>
