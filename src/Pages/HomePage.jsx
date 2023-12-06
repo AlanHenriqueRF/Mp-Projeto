@@ -3,8 +3,16 @@ import Navbar from "../Components/Navbar";
 import cheeseBurguer from '../Assets/cheessBurgeuer.png'
 import pasta from '../Assets/pasta.png'
 import desert from '../Assets/desert.png'
+import { useEffect } from "react";
+import axios from "axios";
 
 export function HomePage() {
+
+    useEffect(()=>{
+        axios.get('http://127.0.0.1:5000/usuarios')
+            .then((data)=>{console.log(data.data)})
+            .catch(err=>{console.log(err)})
+    },[])
     return (
         <>
             <Navbar />
