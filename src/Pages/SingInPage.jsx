@@ -38,7 +38,7 @@ export function SingInPage() {
                 <h3>Entre com sua conta</h3>
                 <input type="email" name="email" placeholder="Seu email" required={true} value={login} onChange={(e)=>{ setLogin(e.target.value)}}/>
                 <input type="password" name="senha" placeholder="Sua senha" required={true} value={senha} onChange={(e)=>{setSenha(e.target.value)}}/>
-                <button type="submit" name="acao" value="Enviar"/>
+                <button type="submit" name="acao" value="Enviar"> Logar </button>
             </form>
 
             <footer className="footer">

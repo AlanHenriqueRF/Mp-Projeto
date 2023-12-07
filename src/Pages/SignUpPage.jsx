@@ -27,6 +27,7 @@ export function SingUpPage() {
 
                 {showRestaurantFields && (
                     <>
+                        <input type="url" name="image" placeholder="Link da imagem" />
                         <input type="text" name="latitude" placeholder="Latitude" />
                         <input type="text" name="longitude" placeholder="Longitude" />
                     </>

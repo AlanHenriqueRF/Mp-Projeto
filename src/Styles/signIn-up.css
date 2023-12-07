@@ -19,14 +19,14 @@
 }
 
 
-.form input[type="text"],.form input[type="password"], .form select {
+.form input, .form select {
     padding: 15px;
     margin-bottom: 10px;
     border: 3px solid #F22E52;
     border-radius: 12px;
 }
 
-.form input[type="submit"] {
+.form input[type="submit"],.form button {
     margin-left: 35%;
     padding: 15px;
     width: 30%;
@@ -39,7 +39,7 @@
     transition: 0.2s;
 }
 
-.form input[type="submit"]:hover {
+.form input[type="submit"]:hover, button:hover {
     background-color: rgb(93, 211, 93);
 }
 
