@@ -4,6 +4,7 @@ import { SearchPage } from "./Pages/SearchPage"
 import { SingInPage } from "./Pages/SingInPage"
 import { SingUpPage } from "./Pages/SignUpPage"
 import { MapaPage } from "./Pages/MapaPage"
+import { AdminPage } from "./Pages/AdminPage"
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path='/SingUp' element={<SingUpPage />} />
         <Route path='/Search' element={<SearchPage />} />
         <Route path='/Mapa' element={<MapaPage />} />
+        <Route path='/Admin' element={<AdminPage />} />
       </Routes>
     </BrowserRouter>
   )
