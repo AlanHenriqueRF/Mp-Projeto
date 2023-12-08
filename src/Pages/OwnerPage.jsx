@@ -1,13 +1,13 @@
 import styled from "styled-components";
 
-export function AdminPage() {
+export function OwnerPage() {
   return (
     <>
       <Containerdiv>
-        <h1>Essa é a adminPage</h1>
-        <h2>Aqui há apenas admins</h2>
-        <Button>Adicionar um novo lote de restaurante</Button>
-        <Button>Excluir um lote de restaurante</Button>
+        <h1>Essa é a Página do seu restaurante</h1>
+        <h2>Aqui você pode editar o seu restaurante</h2>
+        <Button>Adicionar um novo prato</Button>
+        <Button>Excluir um prato existente</Button>
         <Button>Adicionar um prato do dia</Button>
         
       </Containerdiv>

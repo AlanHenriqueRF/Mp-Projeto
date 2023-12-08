@@ -5,6 +5,7 @@ import { SingInPage } from "./Pages/SingInPage"
 import { SingUpPage } from "./Pages/SignUpPage"
 import { MapaPage } from "./Pages/MapaPage"
 import { AdminPage } from "./Pages/AdminPage"
+import { OwnerPage } from "./Pages/OwnerPage"
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path='/Search' element={<SearchPage />} />
         <Route path='/Mapa' element={<MapaPage />} />
         <Route path='/Admin' element={<AdminPage />} />
+        <Route path='/Owner' element={<OwnerPage />} />
       </Routes>
     </BrowserRouter>
   )
