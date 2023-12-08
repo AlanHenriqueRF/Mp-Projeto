@@ -84,6 +84,7 @@ const Prato = styled.li`
     button{
         width: 100%;
         background-color: #1BF28E;
+        margin: 20px;
         height: 62px;
         border: 0;
         border-radius: 0px 0px 20px 20px;
@@ -94,7 +95,6 @@ const Prato = styled.li`
         font-size: 24px;
         font-weight: 800;
         letter-spacing: 1.92px;
-
     }
     
 `

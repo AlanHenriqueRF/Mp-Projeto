@@ -8,7 +8,7 @@ export function OwnerPage() {
         <h2>Aqui você pode editar o seu restaurante</h2>
         <Button>Adicionar um novo prato</Button>
         <Button>Excluir um prato existente</Button>
-        <Button>Adicionar um prato do dia</Button>
+        <Button>Anuncie um prato como "prato do dia"</Button>
         
       </Containerdiv>
     </>

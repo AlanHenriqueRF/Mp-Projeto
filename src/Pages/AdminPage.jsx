@@ -9,6 +9,7 @@ export function AdminPage() {
         <Button>Adicionar um novo lote de restaurante</Button>
         <Button>Excluir um lote de restaurante</Button>
         <Button>Adicionar um prato do dia</Button>
+        <Button>Verificar lista de pratos vendidos</Button>
         
       </Containerdiv>
     </>
@@ -20,7 +21,7 @@ const Containerdiv = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
+  height: 20vh;
   font-family: 'Inter';
 `;
 
@@ -36,16 +37,20 @@ const H2 = styled.h2`
 `;
 
 const Button = styled.button`
-  background-color: #007bff; /* Change color as needed */
-  color: white;
-  padding: 10px;
-  margin-top: 20px;
-  border: none;
-  cursor: pointer;
-  font-size: 16px;
-  font-weight: bold;
+  width: 20%;
+  margin: 10px;
+  background-color: #1BF28E;
+  height: 60px;
+  border: 0;
+  border-radius: 0px 0px 0px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFF;
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: 1.92px;
 
-  &:hover {
-    background-color: #0056b3; /* Change hover color as needed */
   }
+  
 `;
