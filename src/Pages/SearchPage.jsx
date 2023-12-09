@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Navbar from "../Components/Navbar";
 import "../Styles/search.css";
 import axios from 'axios';
+import ApiProdutos from '../service/produtos'
 
 export function SearchPage() {
   const [value, setValue] = useState('all')
@@ -11,19 +12,15 @@ export function SearchPage() {
 
   //Fazer requisição de produtos
   useEffect(() => {
-    const fetchData = async() =>{
-      const response = await axios.get('http://127.0.0.1:5000/produtos')
-
-      const data = response.data
-
+    ApiProdutos.pegaTodosProdutos()
+    .then((data) =>{
       setDados(data)
+    })
       
-    }
 
-    fetchData()
-    console.log(dados)
   }, [])
 
+  console.log(dados)
   return (
     <>
       <Navbar />
