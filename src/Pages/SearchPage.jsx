@@ -6,6 +6,8 @@ export function SearchPage() {
   const [button, setButton] = useState([]);
   const [filteredButton, setFilteredButton] = useState([]);
   const [searchText, setSearchText] = useState('');
+  const [price,setPrice] = useState(0)
+  const [distance,setDistance] = useState(0)
 
   useEffect(() => {
     const fazerRequisicao = () => {
@@ -46,7 +48,18 @@ export function SearchPage() {
           />
 
           <div className="botao">
-            <button onClick={handleSearch}>PESQUISAR</button>
+            <div>            
+              <h3>Preço</h3>
+              <input type="range" onChange={(e) => setPrice(e.target.value)} />
+              {console.log(price)}
+            </div>
+
+            <div>
+              <h3>Distancia</h3>
+              <input type="range" onChange={(e) => setDistance(e.target.value)} />
+              {console.log(distance)}
+            </div>
+
           </div>
         </div>
       </section>
@@ -56,6 +69,7 @@ export function SearchPage() {
           <div className="card" key={item.id}>
             <div className="card-img">
               <img src={item.image} alt="" />
+              <p>R$: {item.price} </p>
               <button>MAIS INFORMAÇÕES</button>
             </div>
             <div className="card-content">
