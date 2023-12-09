@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import Logo from "../Assets/Logo_FF.png";
 import { Link } from "react-router-dom";
-import DropDownProfile from "../Pages/SubMenu";
+import DropDownProfile from "./SubMenu";
 import { NavLink } from 'react-router-dom';
 
 
@@ -32,10 +32,9 @@ export default function Navbar() {
 
 
 
-        <Divsingin>
-          {localStorage.getItem('id_usuario') ? <Link to={"/"} onClick={()=>{localStorage.removeItem('id_usuario');
-          localStorage.removeItem('funcao'); location.reload()}}>Deslogar</Link> : <Link to={"/SingIn"}>Login</Link>}
-        </Divsingin>
+        
+        {localStorage.getItem('id_usuario') ? <></> : <Divsingin><Link to={"/SingIn"}>Login</Link></Divsingin>}
+        
 
         {/* Button to open DropDownProfile */}
         {localStorage.getItem('id_usuario') ? <ToggleDropDownButton onClick={toggleDropDown}>Open Sub Menu</ToggleDropDownButton> : <></>}
@@ -83,6 +82,10 @@ const Links = styled.div`
     font-weight: 800;
     text-decoration: none;
     color: #ffffff;
+  }
+
+  :first-child{
+    padding-left: 0;
   }
 
   h2 {
