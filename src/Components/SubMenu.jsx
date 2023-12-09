@@ -9,7 +9,8 @@ const DropDownProfile = () => {
         <Button to="/Admin">Admin</Button>
         <Button to="/Owner">Owner</Button>
         <Button to="/Historico">Histórico</Button>
-        <Button to="/">Logout</Button>
+        <Button to="/" onClick={()=>{localStorage.removeItem('id_usuario');
+          localStorage.removeItem('funcao'); location.reload()}}>Logout</Button>
       </ul>
     </DropDownProfileContainer>
   );
