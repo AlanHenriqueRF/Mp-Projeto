@@ -14,7 +14,7 @@ export function SearchPage() {
   useEffect(() => {
     ApiProdutos.pegaTodosProdutos()
     .then((data) =>{
-      setDados(data)
+      setDados(data.data)
     })
       
 
