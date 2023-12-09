@@ -32,7 +32,7 @@ export function AdminPage() {
         {isAddMenuVisible && (
           <RestMenu>
             <RestaurantMenu placeholder1="Nome do restaurante" placeholder2="Image URL" placeholder3 ="Código de confirmação">
-              <Button>Adicionar novo prato</Button>
+              <Button>Adicionar novo restaurante</Button>
               <Button onClick={closeAddMenu}>Fechar menu</Button>
             </RestaurantMenu>
           </RestMenu>
@@ -45,6 +45,15 @@ export function AdminPage() {
               <Button> Deletar um restaurante </Button>
               <Button onClick={closeDeleteMenu}>Fechar menu</Button>
             </RestaurantMenu>
+          </RestMenu>
+        )}
+        <Button onClick={toggleDeleteMenu}>Excluir um prato de restaurante</Button>
+        {isDeleteMenuVisible && (
+          <RestMenu>
+            <RestaurantDishMenu placeholder1="Nome do restaurante" placeholder2="Nome do prato a deletar" placeholder3="Código de confirmação" placeholder4="Motivo">
+              <Button> Deletar o prato do restaurante </Button>
+              <Button on click={closeDeleteMenu}>Fechar menu</Button>
+            </RestaurantDishMenu>
           </RestMenu>
         )}
         
@@ -94,6 +103,18 @@ const RestaurantMenu = ({ children, placeholder1, placeholder2,placeholder3 }) =
       <InputBox placeholder={placeholder1}></InputBox>
       <InputBox placeholder={placeholder2}></InputBox>
       <InputBox placeholder={placeholder3}></InputBox>
+      {children}
+    </MenuContainer>
+  );
+};
+
+const RestaurantDishMenu = ({ children, placeholder1, placeholder2,placeholder3,placeholder4 }) => {
+  return (
+    <MenuContainer>
+      <InputBox placeholder={placeholder1}></InputBox>
+      <InputBox placeholder={placeholder2}></InputBox>
+      <InputBox placeholder={placeholder3}></InputBox>
+      <InputBox placeholder={placeholder4}></InputBox>
       {children}
     </MenuContainer>
   );
