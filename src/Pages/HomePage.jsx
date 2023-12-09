@@ -45,10 +45,17 @@ export function HomePage() {
             </Container>
             {showDetails&&(
                 <DetailsMenu>
-                    <img src={cheeseBurguer}/>
-                    <h1>Descição do Carlinhos</h1>
-                    <button>Localizar</button>
-                    <button onClick={handleCloseClick}>Fechar menu</button>
+
+                    <h1>Cheese Burger Magnifico</h1>
+                    <Prato link={desert} onClick={handleDetailsClick}> {/* Esse prato deve ser uma componente que sera renderizada pleo dados que o back fornecerá */}
+                        <div>
+                            <h1>TORTA DOCE</h1>
+                            <h2>R$10,00</h2>
+                        </div>
+                    </Prato>
+                    <h2>Descição do Carlinhos</h2>
+                    <Button_localizar>Localizar</Button_localizar>
+                    <Button_close onClick={handleCloseClick}>X</Button_close>
                 </DetailsMenu>
             )}
         </>
@@ -56,6 +63,7 @@ export function HomePage() {
 }
 
 const DetailsMenu = styled.div`
+
   position: fixed;
   top: 400px;
   width: 500px;
@@ -71,7 +79,7 @@ const DetailsMenu = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   border: 2px solid red; /* Add a red border */
 
   a {
@@ -89,8 +97,20 @@ const DetailsMenu = styled.div`
     border-radius: 30px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
-
-  button {
+`;
+const Button_close = styled.button`
+    position: absolute;
+    cursor:pointer;
+    right: 0px;
+    top: 15px;
+    background-color: #FFF;
+    padding: 12px 24px;
+    color: black;
+    font-size: 24px;
+    font-weight: bolder;
+    border: none;
+`
+const Button_localizar = styled.button`
     background-color: #1BF28E;
     padding: 12px 24px;
     border: 0;
@@ -103,10 +123,13 @@ const DetailsMenu = styled.div`
     transition: background-color 0.3s ease-in-out;
 
     &:hover {
-      background-color: #18c27d;
+        background-color: #18c27d;
     }
-  }
-`;
+`
+const H1 = styled.div`
+
+
+`
 
 
 const Container = styled.div`
@@ -152,7 +175,6 @@ const Prato = styled.li`
     button{
         width: 100%;
         background-color: #1BF28E;
-        margin: 20px;
         height: 62px;
         border: 0;
         border-radius: 0px 0px 20px 20px;
