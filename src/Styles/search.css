@@ -28,8 +28,19 @@
 }
 
 .box-content .botao {
+    display: flex;
     text-align: center;
+    justify-content: center;
     margin-top: 3rem;
+}
+
+.box-content .botao div {
+    margin-right: 2%;
+}
+
+.box-content .botao div h3{
+    color: white;
+    font-weight: bold;
 }
 
 .box-content .botao button {
@@ -59,7 +70,10 @@
 .card-img {
     display: flex;
     flex-direction: column;
+    text-align: center;
+
 }
+
 
 .card-img button {
     padding: 20px;
@@ -72,6 +86,14 @@
 }
 
 .card-img img {width: 200px; height: 180px;}
+
+.card-img p{
+    font-size: 24px;
+    font-weight: bold;
+    color: orange;
+    background-color: white;
+}
+
 
 .card-content {
     margin-left: 1.5rem;
