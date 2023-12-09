@@ -6,6 +6,7 @@ import { SingUpPage } from "./Pages/SignUpPage"
 import { MapaPage } from "./Pages/MapaPage"
 import { AdminPage } from "./Pages/AdminPage"
 import { OwnerPage } from "./Pages/OwnerPage"
+import { HistoricoPage } from "./Pages/HistoricoPage"
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path='/Mapa' element={<MapaPage />} />
         <Route path='/Admin' element={<AdminPage />} />
         <Route path='/Owner' element={<OwnerPage />} />
+        <Route path='/Historico' element={<HistoricoPage />} />
       </Routes>
     </BrowserRouter>
   )

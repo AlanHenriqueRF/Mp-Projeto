@@ -52,7 +52,7 @@ export function AdminPage() {
           <RestMenu>
             <RestaurantDishMenu placeholder1="Nome do restaurante" placeholder2="Nome do prato a deletar" placeholder3="Código de confirmação" placeholder4="Motivo">
               <Button> Deletar o prato do restaurante </Button>
-              <Button on click={closeDeleteMenu}>Fechar menu</Button>
+              <Button onClick={closeDeleteMenu}>Fechar menu</Button>
             </RestaurantDishMenu>
           </RestMenu>
         )}
@@ -67,7 +67,7 @@ const Containerdiv = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 20vh;
+  height: 30vh;
   font-family: 'Inter';
 `;
 
@@ -151,6 +151,7 @@ const RestMenu = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: #333;
+  height: 350px;
   padding: 20px;
   border-radius: 8px;
   z-index: 999;
