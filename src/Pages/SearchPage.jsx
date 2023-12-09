@@ -1,38 +1,31 @@
 import React, { useEffect, useState } from "react";
-import Navbar from "../Components/Navbar";
-import "../Styles/search.css";
+import Navbar from "../Components/Navbar"
+import "../Styles/search.css"
+import ApiProdutos from '../service/produtos'
+import ApiRestaurantes from "../service/restaurantes"
 
 export function SearchPage() {
-  const [button, setButton] = useState([]);
-  const [filteredButton, setFilteredButton] = useState([]);
-  const [searchText, setSearchText] = useState('');
-  const [price,setPrice] = useState(0)
-  const [distance,setDistance] = useState(0)
+  const [value, setValue] = useState('all')
+  const [produtos,setProdutos] = useState([])
+  const [restaurantes,setRestaurantes] = useState([])
+  const [nome, setNome] = useState('')
+  const [searchText, setSearchText] = useState('')
 
   useEffect(() => {
-    const fazerRequisicao = () => {
-      fetch("https://raw.githubusercontent.com/rodrigo1835/DadosParaUmRequest/main/buscar.json")
-        .then(res => res.json()) 
-        .then(resultado => {
-          setButton(resultado);
-          handleSearch(); // Chama a função de filtro imediatamente após a busca
-        })
-        .catch(erro => console.error("Erro ao buscar dados:", erro));
-    };
+    //Faz requisição de produtos
+    ApiProdutos.pegaTodosProdutos()
+    .then((produtos) =>{
+      setProdutos(produtos.data)
+    })
 
-    fazerRequisicao();
-  }, []); // Adicione um array vazio como dependência para garantir que a requisição seja feita apenas uma vez ao montar o componente
+    //Fazer requisição de Restaurantes
+    ApiRestaurantes.pegaTodosRestaurantes()
+    .then((restaurantes) =>{
+      setRestaurantes(restaurantes.data)
+    })
 
-  const handleSearch = () => {
-    const filteredResults = button.filter(item =>
-      item.name.toLowerCase().includes(searchText.toLowerCase())
-    );
-    setFilteredButton(filteredResults);
-  };
+  }, [])
 
-  useEffect(() => {
-    handleSearch();
-  }, [searchText, button]);
 
   return (
     <>
@@ -43,43 +36,87 @@ export function SearchPage() {
           <h2>Qual sua fome hoje?</h2>
           <input 
             type="search" 
-            value={searchText} 
-            onChange={(e) => setSearchText(e.target.value)} 
+            value={searchText}
+            onChange={e => setSearchText(e.target.value)}
           />
 
           <div className="botao">
             <div>            
-              <h3>Preço</h3>
-              <input type="range" onChange={(e) => setPrice(e.target.value)} />
-              {console.log(price)}
+              <h3>Categoria</h3>
+                <select name="categoria" onChange={e => setValue(e.target.value)}>
+                  <option value="all">Tudo</option>
+                  <option value="Entrada">Entrada</option>
+                  <option value="Sobremesa">Sobremesa</option>
+                  <option value="Prato Principal">Prato Principal</option>
+                </select>
+              
             </div>
 
             <div>
-              <h3>Distancia</h3>
-              <input type="range" onChange={(e) => setDistance(e.target.value)} />
-              {console.log(distance)}
+              <h3>Restaurantes</h3>
+              <select name="restaurantes">
+                {restaurantes.map(item => (
+                  <option value={item.nome_restaurante}>{item.nome_restaurante}</option>
+                    
+                ))}
+                </select>
+            </div>
+
+            <div>
+              <h3>Preço</h3>
+              <select name="preco">
+                <option value="maiorpreco">Maior Preço</option>
+                <option value="menorpreco">Menor Preço</option>
+              </select>
             </div>
 
           </div>
         </div>
       </section>
-
+    
       <section className="products">
-        {filteredButton.map((item) => (
-          <div className="card" key={item.id}>
-            <div className="card-img">
-              <img src={item.image} alt="" />
-              <p>R$: {item.price} </p>
-              <button>MAIS INFORMAÇÕES</button>
-            </div>
-            <div className="card-content">
-              <h2>{item.name}</h2>
-              <a href="">{item.restaurant}</a>
-              <p>Descrição: {item.description}</p>
-            </div>
-          </div>
-        ))}
+        {produtos.length > 0 ? (
+          <ul>
+            {produtos
+              //Filtro de pesquisa
+              .filter(item => {
+                const lowerCaseSearchText = searchText.toLowerCase()
+                const lowerCaseNomeProduto = item.nome_produto.toLowerCase()
+                return lowerCaseNomeProduto.includes(lowerCaseSearchText)
+              })
+              .filter(item => {
+                // Se a opção for 'all', retorna true para todos os itens
+                if (value === 'all') {
+                  return true;
+                }
+                // Caso contrário, filtra pelos itens que correspondem à categoria selecionada
+                return item.descricao === value;
+              })
+              .map((item) => (
+                <>
+                  
+                  <div className="card" key={item.id_produto}>
+                    <div className="card-img">
+                      <img src={item.image} alt="" />
+                      <p>R$: {item.preco} </p>
+                      <button>MAIS INFORMAÇÕES</button>
+                    </div>
+                    <div className="card-content">
+                      <h2>{item.nome_produto}</h2>
+                      <a href=""></a>
+                      <p>Descrição: {item.descricao}</p>
+                    </div>
+                  </div>
+                </>
+
+              ))}
+          </ul>
+        ) : (
+          <p>carregando...</p>
+        )}
+
       </section>
     </>
   );
 }
+

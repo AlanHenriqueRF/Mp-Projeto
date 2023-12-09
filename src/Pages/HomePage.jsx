@@ -7,7 +7,6 @@ import { useEffect } from "react";
 import axios from "axios";
 
 export function HomePage() {
-    console.log(localStorage.getItem('id_usuario'))
     return (
         <>
             <Navbar />
