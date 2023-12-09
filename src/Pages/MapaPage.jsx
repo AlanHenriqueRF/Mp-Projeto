@@ -1,15 +1,13 @@
 import React from 'react';
 import { styled } from "styled-components";
 import Navbar from "../Components/Navbar";
-import Mapa from '../Assets/mapa.jpg';
-import Seta from '../Assets/1.png'
+import Mapa from '../Assets/mapa/base.jpg';
+import Seta from '../Assets/caminhos/5.png'
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 
 const MapaManager = styled.div `
-    
+
 `
-   
-      
    
 
 export function MapaPage() {
@@ -27,6 +25,7 @@ export function MapaPage() {
                             </TransformComponent>
                         </TransformWrapper>
                     </MapaManager>
+                   
                    </ImageContainer>
                     
             </Container>
@@ -35,11 +34,7 @@ export function MapaPage() {
 }
 const ImgUp = styled.img `
     position: absolute;
-    left: 490px;
-    top: 300px;
-    weight: 300px;
-    height:300px;
-
+    left: 20%;
 `
 
 const Container = styled.div`
@@ -56,14 +51,15 @@ const Container = styled.div`
 const Div = styled.div`
     margin-bottom: 20px; 
     font-size: 30px;
+    
 `;
 
 const ImageContainer = styled.div`
     overflow: hidden; 
     cursor: grab; 
-    position: relative;
-
     img {
+        
+
         transition: transform 0.55s ease;
         max-width: 60%; 
         // height: auto;

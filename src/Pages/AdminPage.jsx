@@ -31,7 +31,7 @@ export function AdminPage() {
         <Button onClick={toggleAddMenu}>Adicionar um novo restaurante</Button>
         {isAddMenuVisible && (
           <RestMenu>
-            <RestaurantMenu placeholder1="Nome do restaurante" placeholder2="Image URL" placeholder3 ="Código de confirmação">
+            <RestaurantMenu placeholder1="Nome do restaurante" placeholder2="Image URL" placeholder3 ="Código de confirmação" placeholder4="Descrição do produto">
               <Button>Adicionar novo restaurante</Button>
               <Button onClick={closeAddMenu}>Fechar menu</Button>
             </RestaurantMenu>
@@ -41,8 +41,8 @@ export function AdminPage() {
         <Button onClick={toggleDeleteMenu}>Excluir um restaurante</Button>
         {isDeleteMenuVisible && (
           <RestMenu>
-            <RestaurantMenu placeholder1="Nome do restaurante para deletar" placeholder2="Código de confirmação" placeholder3="Motivo">
-              <Button> Deletar um restaurante </Button>
+            <RestaurantMenu placeholder1="Nome do restaurante para deletar" placeholder2="Código de confirmação" placeholder3="Motivo" placeholder4="Descrição">
+              <Button> Deletar o restaurante </Button>
               <Button onClick={closeDeleteMenu}>Fechar menu</Button>
             </RestaurantMenu>
           </RestMenu>
@@ -52,7 +52,7 @@ export function AdminPage() {
           <RestMenu>
             <RestaurantDishMenu placeholder1="Nome do restaurante" placeholder2="Nome do prato a deletar" placeholder3="Código de confirmação" placeholder4="Motivo">
               <Button> Deletar o prato do restaurante </Button>
-              <Button on click={closeDeleteMenu}>Fechar menu</Button>
+              <Button onClick={closeDeleteMenu}>Fechar menu</Button>
             </RestaurantDishMenu>
           </RestMenu>
         )}
@@ -67,7 +67,7 @@ const Containerdiv = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 20vh;
+  height: 30vh;
   font-family: 'Inter';
 `;
 
@@ -97,12 +97,13 @@ const Button = styled.button`
   }
 `;
 
-const RestaurantMenu = ({ children, placeholder1, placeholder2,placeholder3 }) => {
+const RestaurantMenu = ({ children, placeholder1, placeholder2,placeholder3,placeholder4 }) => {
   return (
     <MenuContainer>
       <InputBox placeholder={placeholder1}></InputBox>
       <InputBox placeholder={placeholder2}></InputBox>
       <InputBox placeholder={placeholder3}></InputBox>
+      <InputBox placeholder={placeholder4}></InputBox>
       {children}
     </MenuContainer>
   );
@@ -140,10 +141,6 @@ const InputBox = styled.input`
   border-radius: 4px;
 `;
 
-const CloseButton = styled.button`
-  /* Add styles for the close button */
-  margin-top: 10px; /* Add vertical margin between buttons */
-`;
 
 const RestMenu = styled.div`
   position: fixed;
@@ -151,6 +148,7 @@ const RestMenu = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: #333;
+  height: 350px;
   padding: 20px;
   border-radius: 8px;
   z-index: 999;

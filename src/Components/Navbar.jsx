@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import Logo from "../Assets/Logo_FF.png";
 import { Link } from "react-router-dom";
-import DropDownProfile from "../Pages/SubMenu";
+import DropDownProfile from "./SubMenu";
+import { NavLink } from 'react-router-dom';
+
 
 export default function Navbar() {
   const [isDropDownVisible, setIsDropDownVisible] = useState(false);
@@ -21,17 +23,18 @@ export default function Navbar() {
         </LogoImage>
 
         <Links>
-          <Link to={"/Search"}>Buscar</Link>
-          <h2>|</h2>
-          <Link to={"/"}>Pratos do Dia</Link>
-          <h2>|</h2>
-          <Link to={"/Mapa"}>Mapa</Link>
+
+          <ActiveLinkStyle to={"/Search"}>Buscar</ActiveLinkStyle>
+          <ActiveLinkStyle to={"/"}>Pratos do Dia</ActiveLinkStyle>
+          <ActiveLinkStyle to={"/Mapa"}>Mapa</ActiveLinkStyle>
+
         </Links>
 
-        <Divsingin>
-          {localStorage.getItem('id_usuario') ? <Link to={"/"} onClick={()=>{localStorage.removeItem('id_usuario');
-          localStorage.removeItem('funcao'); location.reload()}}>Deslogar</Link> : <Link to={"/SingIn"}>Login</Link>}
-        </Divsingin>
+
+
+        
+        {localStorage.getItem('id_usuario') ? <></> : <Divsingin><Link to={"/SingIn"}>Login</Link></Divsingin>}
+        
 
         {/* Button to open DropDownProfile */}
         {localStorage.getItem('id_usuario') ? <ToggleDropDownButton onClick={toggleDropDown}>Open Sub Menu</ToggleDropDownButton> : <></>}
@@ -42,6 +45,20 @@ export default function Navbar() {
     </>
   );
 }
+
+const ActiveLinkStyle = styled(NavLink)`
+  font-size: 24px;
+  padding-left: 60px;
+  font-weight: 800;
+  text-decoration: none;
+  color: #ffffff; 
+
+  &.active {
+    color: #f2b56b;
+  }
+`;
+
+
 
 const Header = styled.div`
   display: flex;
@@ -67,15 +84,15 @@ const Links = styled.div`
     color: #ffffff;
   }
 
+  :first-child{
+    padding-left: 0;
+  }
+
   h2 {
     color: #fff;
     font-size: 24px;
     font-weight: 400;
     margin: 0 9px;
-  }
-
-  :nth-child(3) {
-    color: #f2b56b;
   }
 `;
 

@@ -8,7 +8,9 @@ const DropDownProfile = () => {
       <ul>
         <Button to="/Admin">Admin</Button>
         <Button to="/Owner">Owner</Button>
-        <Button to="/">Logout</Button>
+        <Button to="/Historico">Histórico</Button>
+        <Button to="/" onClick={()=>{localStorage.removeItem('id_usuario');
+          localStorage.removeItem('funcao'); location.reload()}}>Logout</Button>
       </ul>
     </DropDownProfileContainer>
   );
@@ -16,8 +18,8 @@ const DropDownProfile = () => {
 
 const DropDownProfileContainer = styled.div`
   position: fixed;
-  top: 60px; /* Adjust the top position as needed */
-  right: 40px;
+  top: 80px; /* Adjust the top position as needed */
+  right: 160px;
   padding: 16px;
   background-color: #333; /* Adjust the background color as needed */
   text-align: right; /* Align the content to the right */
@@ -26,7 +28,7 @@ const DropDownProfileContainer = styled.div`
 const Button = styled(Link)`
   color: white;
   font-size: 20px;
-  font-style: italic;
+  font-weight: bold;
   text-decoration: none; /* Remove default link styling */
   background: none;
   border: none;
