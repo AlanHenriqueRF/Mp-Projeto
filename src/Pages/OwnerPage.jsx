@@ -29,13 +29,13 @@ const Containerdiv = styled.div`
 `;
 
 const H1 = styled.h1`
-  font-size: 100px;
+  font-size: 40px;
   font-weight: bold;
 `;
 
 const H2 = styled.h2`
   color: red;
-  font-size: 70px;
+  font-size: 30px;
   font-style: italic;
 `;
 

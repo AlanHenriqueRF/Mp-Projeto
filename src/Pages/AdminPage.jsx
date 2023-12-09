@@ -8,11 +8,11 @@ export function AdminPage() {
       <Containerdiv>
         <H1>Essa é a adminPage</H1>
         <H2>Aqui há apenas admins</H2>
-        <input placeholder="Adicionar um novo restaurante"></input>
+        <InputBox placeholder="Adicionar um novo restaurante"></InputBox>
         <Button>Adicionar um novo lote de restaurante</Button>
-        <input placeholder="Excluir um restaurante já existente"></input>
+        <InputBox placeholder="Excluir um restaurante já existente"></InputBox>
         <Button>Excluir um lote de restaurante</Button>
-        <input placeholder="Adicionar um prato do dia"></input>
+        <InputBox placeholder="Adicionar um prato do dia"></InputBox>
         <Button>Adicionar um prato do dia</Button>
         <Button>Verificar lista de pratos vendidos</Button>
         
@@ -31,20 +31,24 @@ const Containerdiv = styled.div`
 `;
 
 const H1 = styled.h1`
-  font-size: 80px;
+  font-size: 40px;
   font-weight: bold;
 `;
 
 const H2 = styled.h2`
   color: red;
-  font-size: 50px;
+  font-size: 30px;
   font-style: italic;
 `;
 
-const Input = styled.input`
-  width: 3000px; /* You can adjust the value to your desired size */
-  padding: 100px; /* Add padding for better visual appearance */
-  margin-bottom: 100px; /* Add margin to separate inputs */
+const InputBox = styled.input`
+  width: 50%;
+  height: 40px;
+  margin: 10px;
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 `;
 
 
