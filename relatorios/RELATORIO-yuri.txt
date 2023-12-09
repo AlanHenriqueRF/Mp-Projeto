@@ -1,7 +1,9 @@
 25/11/2023 / 2 Horas / configurar módulo / configuração do módulo de tela principal
 26/11/2023 / 1 hora / Implementar testes / adaptação de função de casos de testes, fazer correções dadas pelo pylint
 26/11/2023/ 3 horas / configurar módulo / Configuração de módulos de tela inicial, pratos do dia, busca e menu de mapa no python.
-06/12/2023 / 1 hora / estudar conteúdo / Estudo de react
-06/12/2023 / 1 hora / configurar módulo / Configuração básica de tela de admin e dono de restaurante
+06/12/2023 / 30 minutos / estudar conteúdo / Estudo de react
+06/12/2023 / 40 minutos / configurar módulo / Configuração básica de tela de admin e dono de restaurante
 07/12/2023 / 1 hora / configurar módulo / Geração de imagens de logos
 07/12/2023 / 1 hora / configurar módulo / Busca de assets de imagens e testagem de inserção de links
+08/12/2023 / 30 minutos / Configurar Módulo / Adição de botões na tela de admin
+09/12/2023 / 1 hora,30 min / Configurar Módulo / Adição de módulo Submenu com transições entre páginas
