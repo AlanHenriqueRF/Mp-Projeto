@@ -4,6 +4,7 @@ import Navbar from "../Components/Navbar"
 import "../Styles/signIn-up.css"
 import { useEffect, useState } from "react"
 import axios from "axios"
+import Apiusuarios from "../service/usuarios"
 
 export function SingInPage() {
     const [login, setLogin] = useState()
@@ -12,9 +13,11 @@ export function SingInPage() {
     const navigate = useNavigate()
 
     useEffect(()=>{
-        axios.get('http://localhost:5000/usuarios')
-            .then((data)=>{setUsers(data.data)})
-            .catch((err)=>{console.log(err)})
+        Apiusuarios.pegaTodosUsers()
+            .then((data)=>{
+                console.log(data)
+                setUsers(data.data)})
+            .catch((err)=>{console.log(err)});
     },[])
 
     function logar(e){
@@ -27,7 +30,9 @@ export function SingInPage() {
         }
         else{
             console.log('deuBOM')
+            console.log(user[0])
             localStorage.setItem('id_usuario', user[0].id_usuario)
+            localStorage.setItem('funcao', user[0].funcao,)
             navigate('/')
         }
     }
