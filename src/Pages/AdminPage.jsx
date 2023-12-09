@@ -1,13 +1,18 @@
 import styled from "styled-components";
+import Navbar from "../Components/Navbar";
 
 export function AdminPage() {
   return (
     <>
+    <Navbar />
       <Containerdiv>
-        <h1>Essa é a adminPage</h1>
-        <h2>Aqui há apenas admins</h2>
+        <H1>Essa é a adminPage</H1>
+        <H2>Aqui há apenas admins</H2>
+        <input placeholder="Adicionar um novo restaurante"></input>
         <Button>Adicionar um novo lote de restaurante</Button>
+        <input placeholder="Excluir um restaurante já existente"></input>
         <Button>Excluir um lote de restaurante</Button>
+        <input placeholder="Adicionar um prato do dia"></input>
         <Button>Adicionar um prato do dia</Button>
         <Button>Verificar lista de pratos vendidos</Button>
         
@@ -26,15 +31,25 @@ const Containerdiv = styled.div`
 `;
 
 const H1 = styled.h1`
-  font-size: 200px;
+  font-size: 80px;
   font-weight: bold;
 `;
 
 const H2 = styled.h2`
   color: red;
-  font-size: 100px;
+  font-size: 50px;
   font-style: italic;
 `;
+
+const Input = styled.input`
+  width: 3000px; /* You can adjust the value to your desired size */
+  padding: 100px; /* Add padding for better visual appearance */
+  margin-bottom: 100px; /* Add margin to separate inputs */
+`;
+
+
+
+
 
 const Button = styled.button`
   width: 20%;
@@ -50,7 +65,4 @@ const Button = styled.button`
   font-size: 24px;
   font-weight: 800;
   letter-spacing: 1.92px;
-
-  }
-  
-`;
+  `;
