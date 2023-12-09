@@ -1,3 +1,4 @@
+import React,{ useState } from 'react';
 import { styled } from "styled-components";
 import Navbar from "../Components/Navbar";
 import cheeseBurguer from '../Assets/cheessBurgeuer.png'
@@ -7,37 +8,105 @@ import { useEffect } from "react";
 import axios from "axios";
 
 export function HomePage() {
+    const [showDetails,setShowDetails] = useState(false);
+    const handleDetailsClick = () => {
+        setShowDetails(true);
+    }
+    const handleCloseClick=() => {
+        setShowDetails(false);
+    }
     return (
         <>
             <Navbar />
             <Container>
                 <ul>
-                    <Prato link={cheeseBurguer}> {/* Esse prato deve ser uma componente que sera renderizada pleo dados que o back fornecerá */}
+                    <Prato link={cheeseBurguer} onClick={handleDetailsClick}> {/* Esse prato deve ser uma componente que sera renderizada pleo dados que o back fornecerá */}
                         <div>
                             <h1>DUPLO CHEEDAR</h1>
                             <h2>R$25,00</h2>
                         </div>
-                        <button onClick={()=>{alert('Em contrução... Ira mostrar assunto sobre o lanche escolhido')}}>MAIS INFORMAÇÕES</button>
+                        <button >MAIS INFORMAÇÕES</button>
                     </Prato>
-                    <Prato link={pasta}> {/* Esse prato deve ser uma componente que sera renderizada pleo dados que o back fornecerá */}
+                    <Prato link={pasta} onClick={handleDetailsClick}> {/* Esse prato deve ser uma componente que sera renderizada pleo dados que o back fornecerá */}
                         <div>
                             <h1>MAC CHEESE</h1>
                             <h2>R$20,00</h2>
                         </div>
-                        <button onClick={()=>{alert('Em contrução... Ira mostrar assunto sobre o lanche escolhido')}}>MAIS INFORMAÇÕES</button>
+                        <button >MAIS INFORMAÇÕES</button>
                     </Prato>
-                    <Prato link={desert}> {/* Esse prato deve ser uma componente que sera renderizada pleo dados que o back fornecerá */}
+                    <Prato link={desert} onClick={handleDetailsClick}> {/* Esse prato deve ser uma componente que sera renderizada pleo dados que o back fornecerá */}
                         <div>
                             <h1>TORTA DOCE</h1>
                             <h2>R$10,00</h2>
                         </div>
-                        <button onClick={()=>{alert('Em contrução... Ira mostrar assunto sobre o lanche escolhido')}}>MAIS INFORMAÇÕES</button>
+                        <button >MAIS INFORMAÇÕES</button>
                     </Prato>
                 </ul>
             </Container>
+            {showDetails&&(
+                <DetailsMenu>
+                    <img src={cheeseBurguer}/>
+                    <h1>Descição do Carlinhos</h1>
+                    <button>Localizar</button>
+                    <button onClick={handleCloseClick}>Fechar menu</button>
+                </DetailsMenu>
+            )}
         </>
     )
 }
+
+const DetailsMenu = styled.div`
+  position: fixed;
+  top: 400px;
+  width: 500px;
+  height: 550px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 500;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid red; /* Add a red border */
+
+  a {
+    font-weight: 800; /* Changed to bold */
+    font-size: 64px; /* Changed to size 64 */
+    color: #000; /* Adjusted text color */
+    text-decoration: none; /* Remove underline */
+    margin-bottom: 20px;
+  }
+
+  img {
+    max-width: 100%;
+    max-height: 200px;
+    margin-bottom: 0px;
+    border-radius: 30px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  button {
+    background-color: #1BF28E;
+    padding: 12px 24px;
+    border: 0;
+    border-radius: 20px;
+    color: #FFF;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+
+    &:hover {
+      background-color: #18c27d;
+    }
+  }
+`;
 
 
 const Container = styled.div`

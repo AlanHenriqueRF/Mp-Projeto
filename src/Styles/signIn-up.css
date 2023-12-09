@@ -40,7 +40,7 @@
 }
 
 .form input[type="submit"]:hover, button:hover {
-    background-color: rgb(93, 211, 93);
+    background-color: rgb(207, 0, 0);
 }
 
 .footer {
