@@ -1,26 +1,32 @@
 import React, { useEffect, useState } from "react";
-import Navbar from "../Components/Navbar";
-import "../Styles/search.css";
-import axios from 'axios';
+import Navbar from "../Components/Navbar"
+import "../Styles/search.css"
 import ApiProdutos from '../service/produtos'
+import ApiRestaurantes from "../service/restaurantes"
 
 export function SearchPage() {
   const [value, setValue] = useState('all')
-  const [dados,setDados] = useState([])
-  const [searchText, setSearchText] = useState('');
+  const [produtos,setProdutos] = useState([])
+  const [restaurantes,setRestaurantes] = useState([])
+  const [nome, setNome] = useState('')
+  const [searchText, setSearchText] = useState('')
 
-
-  //Fazer requisição de produtos
   useEffect(() => {
+    //Faz requisição de produtos
     ApiProdutos.pegaTodosProdutos()
-    .then((data) =>{
-      setDados(data.data)
+    .then((produtos) =>{
+      setProdutos(produtos.data)
     })
-      
+
+    //Fazer requisição de Restaurantes
+    ApiRestaurantes.pegaTodosRestaurantes()
+    .then((restaurantes) =>{
+      setRestaurantes(restaurantes.data)
+    })
 
   }, [])
 
-  console.log(dados)
+
   return (
     <>
       <Navbar />
@@ -46,14 +52,32 @@ export function SearchPage() {
               
             </div>
 
+            <div>
+              <h3>Restaurantes</h3>
+              <select name="restaurantes">
+                {restaurantes.map(item => (
+                  <option value={item.nome_restaurante}>{item.nome_restaurante}</option>
+                    
+                ))}
+                </select>
+            </div>
+
+            <div>
+              <h3>Preço</h3>
+              <select name="preco">
+                <option value="maiorpreco">Maior Preço</option>
+                <option value="menorpreco">Menor Preço</option>
+              </select>
+            </div>
+
           </div>
         </div>
       </section>
     
       <section className="products">
-        {dados.length > 0 ? (
+        {produtos.length > 0 ? (
           <ul>
-            {dados
+            {produtos
               //Filtro de pesquisa
               .filter(item => {
                 const lowerCaseSearchText = searchText.toLowerCase()
@@ -69,18 +93,22 @@ export function SearchPage() {
                 return item.descricao === value;
               })
               .map((item) => (
-                <div className="card" key={item.id_produto}>
-                  <div className="card-img">
-                    <img src={item.image} alt="" />
-                    <p>R$: {item.preco} </p>
-                    <button>MAIS INFORMAÇÕES</button>
+                <>
+                  
+                  <div className="card" key={item.id_produto}>
+                    <div className="card-img">
+                      <img src={item.image} alt="" />
+                      <p>R$: {item.preco} </p>
+                      <button>MAIS INFORMAÇÕES</button>
+                    </div>
+                    <div className="card-content">
+                      <h2>{item.nome_produto}</h2>
+                      <a href=""></a>
+                      <p>Descrição: {item.descricao}</p>
+                    </div>
                   </div>
-                  <div className="card-content">
-                    <h2>{item.nome_produto}</h2>
-                    <a href="">{item.fk_id_restaurante}</a>
-                    <p>Descrição: {item.descricao}</p>
-                  </div>
-                </div>
+                </>
+
               ))}
           </ul>
         ) : (
