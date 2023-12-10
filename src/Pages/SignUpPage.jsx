@@ -11,7 +11,7 @@ export function SingUpPage() {
     }
 
     let nome = "Seu nome"
-    if (showRestaurantFields){
+    if (showRestaurantFields) {
         nome = "Nome do restaurante"
     }
 
