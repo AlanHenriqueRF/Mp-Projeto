@@ -2,47 +2,58 @@
 import { Link, useNavigate } from "react-router-dom"
 import Navbar from "../Components/Navbar"
 import "../Styles/signIn-up.css"
-import { useEffect, useState } from "react"
-import axios from "axios"
+import { useState } from "react"
 import Apiusuarios from "../service/usuarios"
+import { styled } from "styled-components"
 
 export function SingInPage() {
     const [login, setLogin] = useState()
     const [senha, setSenha] = useState()
+    const [select, setSelect] = useState();
+    const [erro,setErro] = useState()
     const navigate = useNavigate()
 
     
 
     function logar(e){
         e.preventDefault();
-        /* body = {login,senha}
-        Apiusuarios.login(body)
-            .then(()) */
-
-        const user = users.filter((i)=>{
-            return (i.login === login.toLowerCase() && i.senha === senha)
-        })
-        if ( !user ){ //|| user[0].senha !== senha
-            console.log('Não encontrado') //mostra algo para usuario
+        let body;
+        if (select != 'Restaurante'){
+            body = {login,senha}
+            Apiusuarios.login(body)
+                .then((data)=>{
+                    console.log(data)
+                    localStorage.setItem('id_usuario', data.data.id_usuario)
+                    localStorage.setItem('funcao', data.data.funcao)
+                    navigate('/')})
+                .catch(e=>{
+                    setErro(
+                        e.response.data)
+                        console.log(e)})
         }
-        else{
-            console.log('deuBOM')
-            console.log(user[0])
-            localStorage.setItem('id_usuario', user[0].id_usuario)
-            localStorage.setItem('funcao', user[0].funcao,)
-            navigate('/')
-        }
+    
     }
     return (
         <>
             <Navbar />
-            <form className="form" onSubmit={(e)=>{logar(e)}}>
+            <form className="form" onSubmit={(e)=>{logar(e)}} id="login">
                 <h3>Entre com sua conta</h3>
                 <input type="email" name="email" placeholder="Seu email" required={true} value={login} onChange={(e)=>{ setLogin(e.target.value)}}/>
                 <input type="password" name="senha" placeholder="Sua senha" required={true} value={senha} onChange={(e)=>{setSenha(e.target.value)}}/>
+
+                <select form="login" onChange={(e)=>{setSelect(e.target.value)}}>
+                    <option value="">Escolha uma opção</option>
+                    <option value="Restaurante">Restaurante</option>
+                    <option value="Pessoa Fisica">Pessoa Fisica</option>
+                </select>
+
                 <button type="submit" name="acao" value="Enviar"> Logar </button>
+                <Errormensage>{erro ? <>{erro}</> : <></>}</Errormensage>
             </form>
 
+            
+
+            
             <footer className="footer">
                 <div className="footer-content">
                     <h4>Não tem conta? <Link to={"/SingUp"}>Registre-se</Link> </h4>
@@ -53,3 +64,14 @@ export function SingInPage() {
         </>
     )
 }
+
+
+const Errormensage = styled.h1`
+    color: red;
+    text-align: center;
+    font-weight: 600;
+    font-size: 20px;
+    width: 100%;
+    margin-top: 20px;
+
+`

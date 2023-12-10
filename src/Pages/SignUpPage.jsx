@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Navbar from "../Components/Navbar";
 import { Link, useNavigate } from "react-router-dom"
 import Apiusuarios from "../service/usuarios";
+import ApiRestaurantes from "../service/restaurantes";
 
 export function SingUpPage() {
     const [showRestaurantFields, setShowRestaurantFields] = useState(false);
@@ -28,12 +29,18 @@ export function SingUpPage() {
         let body;
 
         if (!showRestaurantFields){
-            body = {nome_usuario: name, login: email, senha, funcao: showRestaurantFields ?  "Restaurante": "Pessoa Fisica"} 
-            console.log(body)
+            body = {nome_usuario: name, login: email, senha, funcao: showRestaurantFields ?  "Restaurante": "Pessoa Fisica", distancia_totem: Number(latitude) } 
             Apiusuarios.cadastro(body)
                 .then((data)=>{navigate('/SingIn')})
                 .catch(e=>{console.log(e)})
             }
+        else{
+            body = {nome_restaurante: name, login: email, senha, url_logo: url, distancia_totem: (Number(latitude)**2 + Number(longitude)**2)**0.5}
+            ApiRestaurantes.cadastraRestaurante(body)
+                .then((data)=>{navigate('/SingIn')})
+                .catch((e)=>{console.log(e)})
+        
+        }
         }
     return (
         <>
@@ -48,8 +55,8 @@ export function SingUpPage() {
                 {showRestaurantFields && (
                     <>
                         <input type="url" name="image" placeholder="Link da imagem" value={url} onChange={(e)=>{ setUrl(e.target.value)}}  />
-                        <input type="text" name="latitude" placeholder="Latitude" value={latitude} onChange={(e)=>{ SetLatitude(e.target.value)}}  />
-                        <input type="text" name="longitude" placeholder="Longitude" value={longitude} onChange={(e)=>{ SetLongitude(e.target.value)}}  />
+                        <input type="number" name="latitude" placeholder="Latitude" value={latitude} onChange={(e)=>{ SetLatitude(e.target.value)}}  />
+                        <input type="number" name="longitude" placeholder="Longitude" value={longitude} onChange={(e)=>{ SetLongitude(e.target.value)}}  />
                     </>
                 )}
 

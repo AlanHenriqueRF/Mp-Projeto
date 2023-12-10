@@ -37,6 +37,7 @@
     cursor: pointer;
     font-weight: bold;
     transition: 0.2s;
+    margin-top: 20px;
 }
 
 .form input[type="submit"]:hover, button:hover {

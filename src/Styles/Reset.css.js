@@ -34,6 +34,7 @@ const Reset = createGlobalStyle`
     body {
         line-height: 1;
         background-color: #010a26;
+        font-family: 'Inter';
     }
     ol, ul {
         list-style: none;
