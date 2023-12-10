@@ -18,21 +18,6 @@ export function HomePage() {
     return (
         <>
             <Navbar />
-            <PopUp open>
-                <h1>DUPLO CHEEDAR</h1>
-                <h2>Burguer King</h2>
-                <Prato link={cheeseBurguer}> {/* Esse prato deve ser uma componente que sera renderizada pleo dados que o back fornecerá */}
-                            <div>
-                                <h1>DUPLO CHEEDAR</h1>
-                                <h2>R$25,00</h2>
-                            </div>
-                        </Prato>
-                        <p>Lorem ipsum dolor sit amet, consectetur
-                        adipiscing elit, sed do eiusmod tempor
-                        incididuntut labore et dolore magna aliqua,
-                        Ut enim ad minim veniam, quis nostrud exe.</p>
-                        <button>LOCALIZAÇÃO</button>
-                </PopUp>
             <Container>
                 <ul>
                     <Prato link={cheeseBurguer} onClick={handleDetailsClick}> {/* Esse prato deve ser uma componente que sera renderizada pleo dados que o back fornecerá */}
