@@ -6,58 +6,61 @@ import ApiRestaurantes from "../service/restaurantes"
 import axios from "axios";
 
 export function SearchPage() {
-  const [selectedRestaurante, setSelectedRestaurante] = useState(null);
-  const [restaurantes, setRestaurantes] = useState([]);
-  const [produtos, setProdutos] = useState([]);
-  const [searchText, setSearchText] = useState('');
-  const [categoria, setCategoria] = useState('all');
+  const [value, setValue] = useState('all')
+  const [produtos,setProdutos] = useState([])
+  const [restaurantes,setRestaurantes] = useState([])
+  const [distancia, setDistancia] = useState('0')
   const [preco, setPreco] = useState('all')
-  const [precoFilter, setPrecoFilter] = useState('all');
-  const [selectedRestauranteData, setSelectedRestauranteData] = useState(null);
+  const [searchText, setSearchText] = useState('')
+  
+
+  let nomeRestaurante = {}
+
 
   useEffect(() => {
-    // Fazer requisição de Restaurantes
-    ApiRestaurantes.pegaTodosRestaurantes()
-      .then((response) => {
-        setRestaurantes(response.data);
-      });
-
-    // Faz requisição de produtos
+    //Faz requisição de produtos
     ApiProdutos.pegaTodosProdutos()
-      .then((response) => {
-        setProdutos(response.data);
-      });
-  }, []);
+    .then((produtos) =>{
+      setProdutos(produtos.data)
+    })
 
-  useEffect(() => {
-    // Carregar dados do restaurante selecionado
-    if (selectedRestaurante) {
-      const restauranteData = restaurantes.find(restaurante => restaurante.id_restaurante.toString() === selectedRestaurante);
-      setSelectedRestauranteData(restauranteData);
-    } else {
-      setSelectedRestauranteData(null);
-    }
-  }, [selectedRestaurante, restaurantes]);
+    //Faz requisição de Restaurantes
+    ApiRestaurantes.pegaTodosRestaurantes()
+    .then((restaurantes) =>{
+      setRestaurantes(restaurantes.data)
+    })
+
+
+
+  }, [])
 
   useEffect(() => {
     // Ordena produtos quando o estado de produtos ou preço muda
 
     if (preco === 'maiorpreco') {
-      setProdutos(produtos.slice().sort((a, b) => b.preco - a.preco));
+      setProdutos(produtos.slice().sort((a, b) => b.preco - a.preco))
     } else if (preco === 'menorpreco') {
-      setProdutos(produtos.slice().sort((a, b) => a.preco - b.preco));
-    }
+      setProdutos(produtos.slice().sort((a, b) => a.preco - b.preco))
+    } 
   }, [produtos, preco]);
+  
+  useEffect(() => {
+    if(distancia === 'longe') {
+      setRestaurantes(restaurantes.slice().sort((a, b) => b.distancia_totem - a.distancia_totem))
+    } else if (distancia == 'perto') {
+      setRestaurantes(restaurantes.slice().sort((a, b) => a.distancia_totem - b.distancia_totem));
+    }
+  })
+  
 
 
+  //Dicionario relacionando id com o nome do restaurante
+  restaurantes.forEach(restaurantes => {
+    nomeRestaurante[restaurantes.id_restaurante] = restaurantes.nome_restaurante
+  })
 
-  const handleRestauranteChange = (restauranteId) => {
-    // Setar o restaurante selecionado
-    setSelectedRestaurante(restauranteId);
-  };
-
-
-
+  console.log(value)
+  
   return (
     <>
       <Navbar />
@@ -65,106 +68,128 @@ export function SearchPage() {
       <section className="box">
         <div className="box-content">
           <h2>Qual sua fome hoje?</h2>
-          <input
-            type="search"
+          <input 
+            type="search" 
             value={searchText}
-            onChange={(e) => setSearchText(e.target.value)}
+            onChange={e => setSearchText(e.target.value)}
           />
 
           <div className="botao">
-            <div>
-              <h3>Restaurantes</h3>
-              <select
-                name="restaurantes"
-                onChange={(e) => handleRestauranteChange(e.target.value)}
-              >
-                <option value={null}>Selecionar Restaurantes</option>
-                {restaurantes.map((item) => (
-                  <option key={item.id_restaurante} value={item.id_restaurante}>
-                    {item.nome_restaurante}
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            <div>
+            <div>            
               <h3>Categoria</h3>
-              <select name="categoria" onChange={(e) => setCategoria(e.target.value)}>
-                <option value="all">Tudo</option>
-                <option value="Entrada">Entrada</option>
-                <option value="Sobremesa">Sobremesa</option>
-                <option value="Prato Principal">Prato Principal</option>
-              </select>
+                <select name="categoria" onChange={e => setValue(e.target.value)}>
+                  <option value="all">Tudo</option>
+                  <option value="Entrada">Entrada</option>
+                  <option value="Sobremesa">Sobremesa</option>
+                  <option value="Prato Principal">Prato Principal</option>
+                  <option value="Restaurantes">Restaurantes</option>
+                </select>
+              
             </div>
+            {value == "Restaurantes" && (
+              <>
+                <div>
+                  <h3>Distância</h3>
+                  <select name="distancia" onChange={e => setDistancia(e.target.value)}> 
+                      <option value='all'> Selecione a distancia</option>
+                      <option value="perto">Proximo a mim</option>
+                      <option value="longe">Vou ter que andar</option>
 
-            <div>
-              <h3>Preço</h3>
-              <select name="preco" onChange={e => setPreco(e.target.value)}>
-                <option value="all">Qualquer Preço</option>
-                <option value="maiorpreco">Maior Preço</option>
-                <option value="menorpreco">Menor Preço</option>
-              </select>
-            </div>
+                    </select>
+                </div>
+
+              </>
+            )}
+            {value !== 'Restaurantes' && (
+              <div>
+                <h3>Preço</h3>
+                <select name="preco" onChange={e => setPreco(e.target.value)}>
+                  <option value="all">Qualquer Preço</option>
+                  <option value="maiorpreco">Maior Preço</option>
+                  <option value="menorpreco">Menor Preço</option>
+                </select>
+              </div>
+            )}
+
+
           </div>
         </div>
       </section>
-
-      {selectedRestauranteData && (
-        <section className="restaurant-info">
-          <div className="nome">
-            <h2>{selectedRestauranteData.nome_restaurante}</h2>
-          </div>
-          <div className="logo">
-            <img src={selectedRestauranteData.url_logo} alt={`Logo ${selectedRestauranteData.nome_restaurante}`} />
-          </div>
-
-        </section>
-      )}
-
+    
       <section className="products">
-        {produtos
-          .filter((item) => {
-            // Filtrar por nome do produto
-            const lowerCaseSearchText = searchText.toLowerCase();
-            const lowerCaseNomeProduto = item.nome_produto.toLowerCase();
-            return lowerCaseNomeProduto.includes(lowerCaseSearchText);
-          })
-          .filter((item) => {
-            // Filtrar por restaurante selecionado
-            return !selectedRestaurante || item.fk_id_restaurante.toString() === selectedRestaurante;
-          })
-          .filter((item) => {
-            // Filtrar por categoria
-            return categoria === 'all' || item.descricao === categoria;
-          })
-          .filter((item) => {
-            // Filtrar por preço
-            if (precoFilter === 'all') {
-              return true;
-            } else if (precoFilter === 'maiorpreco') {
-              // Lógica para filtrar por maior preço
-              // Adapte conforme necessário
-              return item.preco >= 50; // Exemplo: considera produtos com preço igual ou superior a 50
-            } else if (precoFilter === 'menorpreco') {
-              // Lógica para filtrar por menor preço
-              // Adapte conforme necessário
-              return item.preco < 50; // Exemplo: considera produtos com preço inferior a 50
-            }
-            return true;
-          })
-          .map((item) => (
-            <div className="card" key={item.id_produto}>
-              <div className="card-img">
-                <img src={item.url_imagem} alt="" />
-                <p>R$: {item.preco} </p>
-                <button>MAIS INFORMAÇÕES</button>
+        {produtos.length > 0 && value !== 'Restaurantes' ? (
+          <ul>
+            {produtos
+              //Filtro de pesquisa
+              .filter(item => {
+                const lowerCaseSearchText = searchText.toLowerCase()
+                const lowerCaseNomeProduto = item.nome_produto.toLowerCase()
+                return lowerCaseNomeProduto.includes(lowerCaseSearchText)
+              })
+              .filter(item => {
+                // Se a opção for 'all', retorna true para todos os itens
+                if (value === 'all') {
+                  return true
+                }
+                // Caso contrário, filtra pelos itens que correspondem à categoria selecionada
+                else {
+                  if (value === 'Restaurantes') {
+                    return true
+                  }
+                  return item.descricao === value;
+                }
+              })
+
+              .map( (item) => (
+                
+                <>
+                  {value !== 'Restaurantes' && (
+                    <div className="card" key={item.id_produto}>
+                      <div className="card-img">
+                        <img src={item.url_imagem} alt="" />
+                        <p>R$: {item.preco} </p>
+                        <button>MAIS INFORMAÇÕES</button>
+                      </div>
+
+                      <div className="card-content">
+                        <h2>{item.nome_produto}</h2>
+                        <a href="">{nomeRestaurante[item.fk_id_restaurante]}</a>
+                        <p>Descrição: {item.descricao}</p>
+                      </div>
+                  </div>
+                  )}
+
+                </>
+
+              ))}
+          </ul>
+        ) : (
+          <>
+            {restaurantes
+              .filter(item => {
+                const lowerCaseSearchText = searchText.toLowerCase()
+                const lowerCaseNomeRestaurante = item.nome_restaurante.toLowerCase()
+                return lowerCaseNomeRestaurante.includes(lowerCaseSearchText)
+              })
+            
+            
+              .map((item) => (
+                <div className="card">
+                  <div className="card-img">
+                    <img src={item.url_logo} alt="" />
+                  </div>
+
+                  <div className="card-content">
+                    <h2>{item.nome_restaurante}</h2>
+                    <a href="">Página do Restaurante</a>
+                    <p>Distãncia: {item.distancia_totem}m</p>
+                  </div>
               </div>
-              <div className="card-content">
-                <h2>{item.nome_produto}</h2>
-                <p>Descrição: {item.descricao}</p>
-              </div>
-            </div>
-          ))}
+            ))}
+          </>
+        
+        )}
+
       </section>
     </>
   );
