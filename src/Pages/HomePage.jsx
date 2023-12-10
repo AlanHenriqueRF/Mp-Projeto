@@ -18,21 +18,6 @@ export function HomePage() {
     return (
         <>
             <Navbar />
-            <PopUp open>
-                <h1>DUPLO CHEEDAR</h1>
-                <h2>Burguer King</h2>
-                <Prato link={cheeseBurguer}> {/* Esse prato deve ser uma componente que sera renderizada pleo dados que o back fornecerá */}
-                            <div>
-                                <h1>DUPLO CHEEDAR</h1>
-                                <h2>R$25,00</h2>
-                            </div>
-                        </Prato>
-                        <p>Lorem ipsum dolor sit amet, consectetur
-                        adipiscing elit, sed do eiusmod tempor
-                        incididuntut labore et dolore magna aliqua,
-                        Ut enim ad minim veniam, quis nostrud exe.</p>
-                        <button>LOCALIZAÇÃO</button>
-                </PopUp>
             <Container>
                 <ul>
                     <Prato link={cheeseBurguer} onClick={handleDetailsClick}> {/* Esse prato deve ser uma componente que sera renderizada pleo dados que o back fornecerá */}
@@ -161,6 +146,16 @@ const Container = styled.div`
         align-items: center;
         justify-content: space-evenly;
     }
+    @media (max-width: 1068px) {
+        ul{
+            display: flex;
+            flex-direction: column;
+            margin-top: 300px;
+        }
+      }
+        
+        
+    
 `
 
 const Prato = styled.li`
@@ -201,5 +196,8 @@ const Prato = styled.li`
         font-weight: 800;
         letter-spacing: 1.92px;
     }
-    
+    @media (max-width: 1068px) {
+        margin-top: 40px;
+        margin-bottom: 20px;
+    }
 `
