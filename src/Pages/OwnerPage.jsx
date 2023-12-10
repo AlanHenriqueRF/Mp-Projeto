@@ -5,6 +5,7 @@ import Navbar from "../Components/Navbar";
 export function OwnerPage() {
   const [isAddDishMenuVisible, setIsAddDishMenuVisible] = useState(false);
   const [isRemoveDishMenuVisible, setIsRemoveDishMenuVisible] = useState(false);
+  const [isEditDishMenuVisible,setIsEditDishMenuVisible] = useState(false);
 
   const toggleAddDishMenu = () => {
     setIsAddDishMenuVisible(!isAddDishMenuVisible);
@@ -22,6 +23,13 @@ export function OwnerPage() {
     setIsRemoveDishMenuVisible(!isRemoveDishMenuVisible);
   }
 
+  const toggleEditDishMenu = () => {
+    setIsEditDishMenuVisible(!isEditDishMenuVisible);
+  }
+
+  const closeEditDishMenu = () =>{
+    setIsEditDishMenuVisible(!isEditDishMenuVisible);
+  }
   return (
     <>
       <Navbar />
@@ -51,7 +59,17 @@ export function OwnerPage() {
             <Button onClick={closeRemoveDishMenu}>Fechar menu</Button>
           </DishMenu>
         )}
-        <Button>Editar o preço de um prato</Button>
+        <Button onClick={toggleEditDishMenu}>Editar o preço de um prato</Button>
+
+        {isEditDishMenuVisible && (
+          <DishMenu>
+            <InputBox placeholder="Nome do prato"></InputBox>
+            <InputBox placeholder="Código de confirmação"></InputBox>
+            <InputBox placeholder="Editar preço"></InputBox>
+            <Button>Editar preço</Button>
+            <Button onClick={closeEditDishMenu}>Fechar menu</Button>
+          </DishMenu>
+        )}
         <Button>Anuncie um prato como "prato do dia"</Button>
       </Containerdiv>
     </>
