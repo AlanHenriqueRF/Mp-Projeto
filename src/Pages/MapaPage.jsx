@@ -2,7 +2,7 @@ import React from 'react';
 import { styled } from "styled-components";
 import Navbar from "../Components/Navbar";
 import Mapa from '../Assets/mapa/base.jpg';
-import Seta from '../Assets/caminhos/5.png'
+import Seta from '../Assets/caminhos/0.png'
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 
 const MapaManager = styled.div `
