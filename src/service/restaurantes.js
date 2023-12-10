@@ -6,10 +6,12 @@ function pegaTodosRestaurantes() {
     return promise
 }
 
-function selecionarRestaurante(id) {
-    const promise = axios.get(`${BASE_URL}/restaurante/${id}`)
-    return promise
+async function pegarNomeRestaurante(id){
+    const promise = await axios.get(`${BASE_URL}/restaurante/${id}`)
+    const nome = promise.data
+    return nome
+
 }
 
-const ApiRestaurantes = {pegaTodosRestaurantes,selecionarRestaurante}
+const ApiRestaurantes = {pegaTodosRestaurantes,pegarNomeRestaurante}
 export default ApiRestaurantes
