@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import Navbar from "../Components/Navbar";
-import ApiProdutos from '../service/produtos';
-import ApiRestaurantes from "../service/restaurantes";
-import "../Styles/search.css";
+import Navbar from "../Components/Navbar"
+import "../Styles/search.css"
+import ApiProdutos from '../service/produtos'
+import ApiRestaurantes from "../service/restaurantes"
+import axios from "axios";
 
 export function SearchPage() {
   const [selectedRestaurante, setSelectedRestaurante] = useState(null);
@@ -10,6 +11,7 @@ export function SearchPage() {
   const [produtos, setProdutos] = useState([]);
   const [searchText, setSearchText] = useState('');
   const [categoria, setCategoria] = useState('all');
+  const [preco, setPreco] = useState('all')
   const [precoFilter, setPrecoFilter] = useState('all');
   const [selectedRestauranteData, setSelectedRestauranteData] = useState(null);
 
@@ -37,10 +39,24 @@ export function SearchPage() {
     }
   }, [selectedRestaurante, restaurantes]);
 
+  useEffect(() => {
+    // Ordena produtos quando o estado de produtos ou preço muda
+
+    if (preco === 'maiorpreco') {
+      setProdutos(produtos.slice().sort((a, b) => b.preco - a.preco));
+    } else if (preco === 'menorpreco') {
+      setProdutos(produtos.slice().sort((a, b) => a.preco - b.preco));
+    }
+  }, [produtos, preco]);
+
+
+
   const handleRestauranteChange = (restauranteId) => {
     // Setar o restaurante selecionado
     setSelectedRestaurante(restauranteId);
   };
+
+
 
   return (
     <>
@@ -62,7 +78,7 @@ export function SearchPage() {
                 name="restaurantes"
                 onChange={(e) => handleRestauranteChange(e.target.value)}
               >
-                <option value={null}>Todos os Restaurantes</option>
+                <option value={null}>Selecionar Restaurantes</option>
                 {restaurantes.map((item) => (
                   <option key={item.id_restaurante} value={item.id_restaurante}>
                     {item.nome_restaurante}
@@ -83,7 +99,7 @@ export function SearchPage() {
 
             <div>
               <h3>Preço</h3>
-              <select name="preco" onChange={(e) => setPrecoFilter(e.target.value)}>
+              <select name="preco" onChange={e => setPreco(e.target.value)}>
                 <option value="all">Qualquer Preço</option>
                 <option value="maiorpreco">Maior Preço</option>
                 <option value="menorpreco">Menor Preço</option>
