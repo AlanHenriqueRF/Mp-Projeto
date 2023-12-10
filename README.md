@@ -26,11 +26,21 @@ nvm use
 npm install
 ```
 ## Executando o Projeto
+Será preciso também clonar o repositório com a API do banco de dados do projeto:
+https://github.com/MarceloVitor01/API-MP-Projeto
+
 Após configurar o projeto, você pode executá-lo localmente usando o seguinte comando:
 
 ```bash
 npm run dev
 ```
+
+Depois disso, basta executar o servidor do banco de dados, acessando o terminal no diretório da API e usando o seguinte comando:
+
+```bash
+python3 app.py
+```
+
 Este comando iniciará o servidor de desenvolvimento e você poderá acessar o projeto no seu navegador em http://localhost:5173/.
 
 
