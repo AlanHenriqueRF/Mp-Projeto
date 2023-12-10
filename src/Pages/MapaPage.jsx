@@ -76,6 +76,7 @@ console.log('novaseta', novaseta);
   );
 }
 
+
 const ImgUp = styled.img`
   position: absolute;
   left: 20%;
@@ -90,6 +91,7 @@ const Container = styled.div`
   font-family: 'Inter';
   height: 120vh;
   // Other styles...
+
 `;
 
 const Div = styled.div`
