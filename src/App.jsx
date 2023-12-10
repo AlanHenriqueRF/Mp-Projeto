@@ -17,6 +17,7 @@ function App() {
         <Route path='/SingUp' element={<SingUpPage />} />
         <Route path='/Search' element={<SearchPage />} />
         <Route path='/Mapa' element={<MapaPage />} />
+        <Route path='/Mapa/:argumento' element={<MapaPage />} />
         <Route path='/Admin' element={<AdminPage />} />
         <Route path='/Owner' element={<OwnerPage />} />
         <Route path='/Historico' element={<HistoricoPage />} />
