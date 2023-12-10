@@ -38,7 +38,7 @@
     margin-right: 2%;
 }
 
-.box-content .botao div h3{
+.box-content .botao div h3 {
     color: white;
     font-weight: bold;
 }
@@ -53,13 +53,14 @@
     cursor: pointer;
 }
 
-.box-content .botao button:hover{
+.box-content .botao button:hover {
     background-color: #14be6f;
 }
 
 .products {
     padding: 2rem;
 }
+
 .card {
     border-bottom: 1px solid black;
     display: flex;
@@ -85,9 +86,12 @@
     cursor: pointer;
 }
 
-.card-img img {width: 200px; height: 180px;}
+.card-img img {
+    width: 200px;
+    height: 180px;
+}
 
-.card-img p{
+.card-img p {
     font-size: 24px;
     font-weight: bold;
     color: orange;
@@ -105,7 +109,7 @@
     font-weight: bold;
 }
 
-.card-content a{
+.card-content a {
     color: orange;
     text-decoration: none;
     transition: 0.2s;
@@ -118,4 +122,37 @@
 .card-content p {
     font-size: 18px;
     margin-top: 20px;
+}
+
+.restaurant-info {
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+
+}
+
+
+
+
+.logo img {
+
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    margin-right: 20px;
+    padding: 30px;
+
+}
+
+
+
+
+.nome h2 {
+
+    color: white;
+    font-size: 30px;
+    padding: 30px;
+
 }
