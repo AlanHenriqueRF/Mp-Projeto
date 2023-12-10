@@ -7,3 +7,9 @@
 07/12/2023 / 1 hora / configurar módulo / Busca de assets de imagens e testagem de inserção de links
 08/12/2023 / 30 minutos / Configurar Módulo / Adição de botões na tela de admin
 09/12/2023 / 1 hora,30 min / Configurar Módulo / Adição de módulo Submenu com transições entre páginas
+09/12/2023 / 2 horas / Codificar módulos / módulos de homepage, histórico, admin e owner.
+09/12/2023 / 30 min / estudar conteúdo / Estudar react,javascript 
+09/12/2023 / 1 hora / Configurar Módulo / Busca e adição de imagens para serem adicionadas ao Backend
+09/12/2023 / 1 hora / 
+10/12/2023/ 1 hora / Gerenciar a construção do software / Documentação dos processos de sprint e relatórios
+10/12/2023 / 1 hora / Revisar especificações / Revisão das especificações necessárias para o projeto atualizadas ao javascript
