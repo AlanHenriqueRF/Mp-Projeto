@@ -51,6 +51,7 @@ export function OwnerPage() {
             <Button onClick={closeRemoveDishMenu}>Fechar menu</Button>
           </DishMenu>
         )}
+        <Button>Editar o preço de um prato</Button>
         <Button>Anuncie um prato como "prato do dia"</Button>
       </Containerdiv>
     </>

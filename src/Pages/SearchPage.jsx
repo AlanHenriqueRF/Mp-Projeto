@@ -93,8 +93,6 @@ export function SearchPage() {
                 return item.descricao === value;
               })
               .map((item) => (
-                <>
-                  
                   <div className="card" key={item.id_produto}>
                     <div className="card-img">
                       <img src={item.image} alt="" />
@@ -103,12 +101,9 @@ export function SearchPage() {
                     </div>
                     <div className="card-content">
                       <h2>{item.nome_produto}</h2>
-                      <a href=""></a>
                       <p>Descrição: {item.descricao}</p>
                     </div>
                   </div>
-                </>
-
               ))}
           </ul>
         ) : (
