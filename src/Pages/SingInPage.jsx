@@ -9,19 +9,16 @@ import Apiusuarios from "../service/usuarios"
 export function SingInPage() {
     const [login, setLogin] = useState()
     const [senha, setSenha] = useState()
-    const [users, setUsers] = useState()
     const navigate = useNavigate()
 
-    useEffect(()=>{
-        Apiusuarios.pegaTodosUsers()
-            .then((data)=>{
-                console.log(data)
-                setUsers(data.data)})
-            .catch((err)=>{console.log(err)});
-    },[])
+    
 
     function logar(e){
         e.preventDefault();
+        /* body = {login,senha}
+        Apiusuarios.login(body)
+            .then(()) */
+
         const user = users.filter((i)=>{
             return (i.login === login.toLowerCase() && i.senha === senha)
         })
