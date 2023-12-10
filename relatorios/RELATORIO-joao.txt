@@ -1,0 +1,5 @@
+07/12 - 2 horas - Estudo de react
+08/12 - 1:30 hora - Implementar estrutura básica da página do mapa
+09/12 - 30 min - Deixar a navbar mais responsiva
+09/12 - 3 horas - Preparar a documentação e documentar
+10/12 - 1:20 horas - Terminar de documentar
