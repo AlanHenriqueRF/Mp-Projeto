@@ -4,7 +4,7 @@ Este é um breve guia para ajudar você a começar com o projeto. Siga as instru
 Para mais informações, acesse a documentação oficial do projeto:
 https://joaovictorromero.github.io/ff-docs/
 
-# Pré-requisitos
+# Pré-requisito
 Antes de começar, certifique-se de ter o Node Version Manager (NVM) instalado em sua máquina.
 
 # Configuração do Projeto
