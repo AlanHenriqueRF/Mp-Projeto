@@ -10,16 +10,17 @@ import ApiProdutos from '../service/produtos';
 import { PratosContext } from '../providers/PratosContext';
 
 export function HomePage() {
-    const [showDetails,setShowDetails] = useState(false);
+    const [selectedPrato, setSelectedPrato] = useState(null);
     const {pratosDia} = useContext(PratosContext)
     console.log(pratosDia)
 
-    const handleDetailsClick = () => {
-        setShowDetails(true);
-    }
-    const handleCloseClick=() => {
-        setShowDetails(false);
-    }
+    const handleDetailsClick = (prato) => {
+        setSelectedPrato(prato);
+      };
+    
+      const handleCloseClick = () => {
+        setSelectedPrato(null);
+      };
 
     
 
@@ -34,22 +35,22 @@ export function HomePage() {
                                 <h1>{pratosDia.nome_produto}</h1>
                                 <h2>R$ {pratosDia.preco}</h2>
                             </div>
-                            <button onClick={handleDetailsClick} >MAIS INFORMAÇÕES</button>
+                            <button onClick={() => {handleDetailsClick(pratosDia) }}>MAIS INFORMAÇÕES</button>
                         </Prato>
                     ))}
                 </ul>
             </Container>
-            {showDetails&&(
+            {selectedPrato &&(
                 <DetailsMenu>
 
-                    <h1>Cheese Burger Magnifico</h1>
-                    <Prato link={desert} onClick={handleDetailsClick}> {/* Esse prato deve ser uma componente que sera renderizada pleo dados que o back fornecerá */}
+                    <h1>{selectedPrato.nome_produto}</h1>
+                    <Prato link={selectedPrato.url_imagem}> {/* Esse prato deve ser uma componente que sera renderizada pleo dados que o back fornecerá */}
                         <div>
-                            <h1>TORTA DOCE</h1>
-                            <h2>R$10,00</h2>
+                            <h1>{selectedPrato.nome_produto}</h1>
+                            <h2>R$ {selectedPrato.preco}</h2>
                         </div>
                     </Prato>
-                    <h2>Descição do Carlinhos</h2>
+                    <h2>{selectedPrato.descricao}</h2>
                     <Button_localizar>Localizar</Button_localizar>
                     <Button_close onClick={handleCloseClick}>X</Button_close>
                 </DetailsMenu>
@@ -206,6 +207,7 @@ const Prato = styled.li`
         font-weight: 800;
         letter-spacing: 1.92px;
         margin-bottom: 30px;
+        cursor: pointer;
     }
     @media (max-width: 1068px) {
         margin-top: 40px;
