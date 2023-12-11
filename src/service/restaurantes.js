@@ -2,7 +2,7 @@ import axios from "axios";
 import BASE_URL from "./base_url";
 
 function loginrestaurante(body){
-    const promise = axios.post(BASE_URL+'loginRestaurante',body)
+    const promise = axios.post(BASE_URL+'/login_restaurante',body)
     return promise
 }
 

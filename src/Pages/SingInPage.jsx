@@ -5,6 +5,7 @@ import "../Styles/signIn-up.css"
 import { useState } from "react"
 import Apiusuarios from "../service/usuarios"
 import { styled } from "styled-components"
+import ApiRestaurantes from "../service/restaurantes"
 
 export function SingInPage() {
     const [login, setLogin] = useState()
@@ -25,6 +26,19 @@ export function SingInPage() {
                     console.log(data)
                     localStorage.setItem('id_usuario', data.data.id_usuario)
                     localStorage.setItem('funcao', data.data.funcao)
+                    navigate('/')})
+                .catch(e=>{
+                    setErro(
+                        e.response.data)
+                        console.log(e)})
+        }
+        else{
+            body = {login,senha}
+            ApiRestaurantes.loginrestaurante(body)
+                .then((data)=>{
+                    console.log(data)
+                    localStorage.setItem('id_restaurante', data.data.id_restaurante)
+                    localStorage.setItem('funcao', "Restaurante")
                     navigate('/')})
                 .catch(e=>{
                     setErro(

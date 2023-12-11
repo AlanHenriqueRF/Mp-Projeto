@@ -33,11 +33,12 @@ export default function Navbar() {
 
 
         
-        {localStorage.getItem('id_usuario') ? <></> : <Divsingin><Link to={"/SingIn"}>Login</Link></Divsingin>}
+        {localStorage.getItem('id_usuario') && localStorage.getItem('funcao') != 'Restaurante' ? <Divsingin><Link to={"/"} onClick={()=>{localStorage.removeItem('id_usuario');
+          localStorage.removeItem('funcao'); location.reload()}}>Logout</Link></Divsingin> : <Divsingin><Link to={"/SingIn"}>Login</Link></Divsingin>}
         
 
         {/* Button to open DropDownProfile */}
-        {localStorage.getItem('id_usuario') ? <ToggleDropDownButton onClick={toggleDropDown}>Open Sub Menu</ToggleDropDownButton> : <></>}
+        {localStorage.getItem('funcao') === 'Restaurante' ? <ToggleDropDownButton onClick={toggleDropDown}>Open Sub Menu</ToggleDropDownButton> : <></>}
       </Header>
       
       {/* Pass the visibility state to DropDownProfile */}
