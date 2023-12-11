@@ -1,9 +1,8 @@
 
-VERSÃO 1 DO VERIFICADOR ESTÁTICO
 > projeto_de_mp@0.0.0 lint
 > eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0
 
-//não importante
+
 /home/a/Downloads/Mp-Projeto/src/App.jsx
   13:5   error  'React' must be in scope when using JSX  react/react-in-jsx-scope
   14:7   error  'React' must be in scope when using JSX  react/react-in-jsx-scope
@@ -26,7 +25,6 @@ VERSÃO 1 DO VERIFICADOR ESTÁTICO
   23:9   error  'React' must be in scope when using JSX  react/react-in-jsx-scope
   23:43  error  'React' must be in scope when using JSX  react/react-in-jsx-scope
 
-//a página ainda não está concluída
 /home/a/Downloads/Mp-Projeto/src/Pages/AdminPage.jsx
   100:27  error  'children' is missing in props validation      react/prop-types
   100:37  error  'placeholder1' is missing in props validation  react/prop-types
@@ -39,29 +37,18 @@ VERSÃO 1 DO VERIFICADOR ESTÁTICO
   112:68  error  'placeholder3' is missing in props validation  react/prop-types
   112:81  error  'placeholder4' is missing in props validation  react/prop-types
 
-//resolvidoos
-/home/a/Downloads/Mp-Projeto/src/Pages/HomePage.jsx
-    7:10  error  'useEffect' is defined but never used    no-unused-vars
-    8:8   error  'axios' is defined but never used        no-unused-vars
-  129:7   error  'H1' is assigned a value but never used  no-unused-vars
-os códigos referidos acima foram comentados para evitar bugs, e a equipe foi informada, não excluí pois ainda preciso descobrir o motivo da criação dos mesmos
-
-//mudança não necessária
 /home/a/Downloads/Mp-Projeto/src/Pages/OwnerPage.jsx
   73:39  error  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
   73:52  error  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
 
-//essa página ainda não está concluída
 /home/a/Downloads/Mp-Projeto/src/Pages/SearchPage.jsx
     6:8   error  'axios' is defined but never used           no-unused-vars
   177:17  error  Missing "key" prop for element in iterator  react/jsx-key
 
-//essa página ainda não está concluída
 /home/a/Downloads/Mp-Projeto/src/Pages/SignUpPage.jsx
   34:24  error  'data' is defined but never used  no-unused-vars
   40:24  error  'data' is defined but never used  no-unused-vars
 
-//não importante
 /home/a/Downloads/Mp-Projeto/src/Pages/SingInPage.jsx
   37:9   error  'React' must be in scope when using JSX  react/react-in-jsx-scope
   38:13  error  'React' must be in scope when using JSX  react/react-in-jsx-scope
@@ -82,5 +69,5 @@ os códigos referidos acima foram comentados para evitar bugs, e a equipe foi in
   59:21  error  'React' must be in scope when using JSX  react/react-in-jsx-scope
   59:40  error  'React' must be in scope when using JSX  react/react-in-jsx-scope
 
-✖ 57 problems (57 errors, 0 warnings)
+✖ 54 problems (54 errors, 0 warnings)
 
