@@ -24,6 +24,7 @@ module.exports = {
         "ecmaVersion": "latest",
         "sourceType": "module"
     },
+    "ignorePatterns": ["docs/*"],
     "plugins": [
         "react"
     ],
