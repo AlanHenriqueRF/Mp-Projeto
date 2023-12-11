@@ -1,0 +1,9 @@
+4h - Designer do front no figma.
+
+2h - Página de busca(Apenas a parte visual).
+
+3h - Página de login e registro(Apenas a parte visual).
+
+16h - Foram 3 dias consecutivos integrando o backend com front(Filtro de pesquisa).
+
+1h - Ajeitando bugs para entrega final
