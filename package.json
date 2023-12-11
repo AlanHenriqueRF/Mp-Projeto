@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "docs": "esdoc",
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
@@ -25,11 +26,26 @@
     "@types/react-dom": "^18.2.15",
     "@vitejs/plugin-react": "^4.2.0",
     "cypress": "^13.6.1",
+    "esdoc": "^1.1.0",
+    "esdoc-standard-plugin": "^1.0.0",
     "eslint": "^8.55.0",
     "eslint-config-google": "^0.14.0",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.4",
     "vite": "^5.0.0"
-  }
+  },
+  "description": "Este é um breve guia para ajudar você a começar com o projeto. Siga as instruções abaixo para configurar e executar o projeto localmente.",
+  "main": "eslintrc.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlanHenriqueRF/Mp-Projeto.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlanHenriqueRF/Mp-Projeto/issues"
+  },
+  "homepage": "https://github.com/AlanHenriqueRF/Mp-Projeto#readme"
 }

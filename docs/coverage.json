@@ -1,0 +1,43 @@
+{
+  "coverage": "0%",
+  "expectCount": 12,
+  "actualCount": 0,
+  "files": {
+    "src/Styles/Reset.css.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        3
+      ]
+    },
+    "src/service/produtos.js": {
+      "expectCount": 2,
+      "actualCount": 0,
+      "undocumentLines": [
+        4,
+        13
+      ]
+    },
+    "src/service/restaurantes.js": {
+      "expectCount": 5,
+      "actualCount": 0,
+      "undocumentLines": [
+        4,
+        9,
+        14,
+        21,
+        28
+      ]
+    },
+    "src/service/usuarios.js": {
+      "expectCount": 4,
+      "actualCount": 0,
+      "undocumentLines": [
+        4,
+        9,
+        14,
+        18
+      ]
+    }
+  }
+}
