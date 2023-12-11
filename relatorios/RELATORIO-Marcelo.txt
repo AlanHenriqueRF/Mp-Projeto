@@ -1,0 +1,11 @@
+24/11/2023 - 3h - Modelagem do banco de dados, criação das tabelas e conexão com o Python;
+27/11/2023 - 2h - Teste da conexão e funções no banco de dados;
+28/11/2023 - 2h - Testes das funções;
+29/11/2023 - 4h - Adaptação das classes antigas para o Flask e SQLAlchemy;
+02/12/2023 - 1h - Upload dos códigos para o GitHub;
+05/12/2023 - 2h - Alteração da modelagem do banco de dados;
+06/12/2023 - 1h - Criação do CRUD de usuários;
+07/12/2023 - 1h - Testes com o Pytest-Flask;
+08/12/2023 - 2h - Adição da tabela staff ao banco de dados;
+09/12/2023 - 3h - Criação das rotas para integração com o front-end;
+10/12/2023 - 4h - Testes com o Pytest-cov e deploy do back-end;
