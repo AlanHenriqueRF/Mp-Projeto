@@ -1,24 +1,25 @@
-import React,{ useContext, useState } from 'react';
+import React,{ useContext, useState, useHistory } from 'react';
 import { styled } from "styled-components";
 import Navbar from "../Components/Navbar";
 import cheeseBurguer from '../Assets/cheessBurgeuer.png'
 import pasta from '../Assets/pasta.png'
 import desert from '../Assets/desert.png'
 import { PratosContext } from '../providers/PratosContext';
+import { Link } from 'react-router-dom';
 
 export function HomePage() {
-    const [showDetails,setShowDetails] = useState(false);
+    const [selectedPrato, setSelectedPrato] = useState(null);
     const {pratosDia} = useContext(PratosContext)
     console.log(pratosDia)
 
-    const handleDetailsClick = () => {
-        setShowDetails(true);
-    }
-    const handleCloseClick=() => {
-        setShowDetails(false);
-    }
-
+    const handleDetailsClick = (prato) => {
+        setSelectedPrato(prato);
+      };
     
+      const handleCloseClick = () => {
+        setSelectedPrato(null);
+      };
+
 
     return (
         <>
@@ -31,23 +32,23 @@ export function HomePage() {
                                 <h1>{pratosDia.nome_produto}</h1>
                                 <h2>R$ {pratosDia.preco}</h2>
                             </div>
-                            <button onClick={handleDetailsClick} >MAIS INFORMAÇÕES</button>
+                            <button onClick={() => {handleDetailsClick(pratosDia) }}>MAIS INFORMAÇÕES</button>
                         </Prato>
                     ))}
                 </ul>
             </Container>
-            {showDetails&&(
+            {selectedPrato &&(
                 <DetailsMenu>
 
-                    <h1>Cheese Burger Magnifico</h1>
-                    <Prato link={desert} onClick={handleDetailsClick}> {/* Esse prato deve ser uma componente que sera renderizada pleo dados que o back fornecerá */}
+                    <h1>{selectedPrato.nome_produto}</h1>
+                    <Prato link={selectedPrato.url_imagem}> {/* Esse prato deve ser uma componente que sera renderizada pleo dados que o back fornecerá */}
                         <div>
-                            <h1>TORTA DOCE</h1>
-                            <h2>R$10,00</h2>
+                            <h1>{selectedPrato.nome_produto}</h1>
+                            <h2>R$ {selectedPrato.preco}</h2>
                         </div>
                     </Prato>
-                    <h2>Descição do Carlinhos</h2>
-                    <Button_localizar>Localizar</Button_localizar>
+                    <h2>{selectedPrato.descricao}</h2>
+                    <LinkLocalizar to={`/Mapa/${selectedPrato.fk_id_restaurante}`}>Localizar</LinkLocalizar>
                     <Button_close onClick={handleCloseClick}>X</Button_close>
                 </DetailsMenu>
             )}
@@ -103,7 +104,7 @@ const Button_close = styled.button`
     font-weight: bolder;
     border: none;
 `
-const Button_localizar = styled.button`
+const LinkLocalizar = styled(Link)`
     background-color: #1BF28E;
     padding: 12px 24px;
     border: 0;
@@ -140,7 +141,7 @@ const Container = styled.div`
     @media (max-width: 1068px) {
         ul{
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             margin-top: 300px;
         }
       }
@@ -153,7 +154,7 @@ const Prato = styled.li`
     div{
         background-image: url(${props => props.link});
         background-repeat: no-repeat;
-        background-size: cover;
+        background-size: 332px 200px;
         width: 332px;
         height: 200px;
         display: flex;
@@ -166,12 +167,22 @@ const Prato = styled.li`
         
 
         h1{
-            color: #ffffff;
+            text-align: center; 
+            color: #FFFFFF;
             margin-top: 24px;
+            font-weight: 900;
+            font-size: 23px;
+            text-shadow: 4px 4px 0 #000;
+
+            
         }
         h2{
-            color:#FFE600;
+            color:#FFFFFF;
             margin-bottom: 21px;
+            font-weight: 900;
+            font-size: 23px;
+            text-shadow: 4px 4px 0 #000;
+            text-align: center; 
         }
 
     }
@@ -189,6 +200,8 @@ const Prato = styled.li`
         font-size: 24px;
         font-weight: 800;
         letter-spacing: 1.92px;
+        margin-bottom: 30px;
+        cursor: pointer;
     }
     @media (max-width: 1068px) {
         margin-top: 40px;

@@ -4,4 +4,7 @@
 08/12/2023 / 30 minutos / configurar módulo / ajuda na criação do pop-up
 09/12/2023 / 20 minutos / estudar conteudo / Integração com backend
 10/12/2023 / 30 minutos / configurar módulo / deixar a tela principal responsiva
-10/12/2023 / 4 horas /  configurar módulo / configurando o botão anunciar pratos da pagina owner
+10/12/2023 / 3 horas /  configurar módulo / configurando o botão anunciar pratos da pagina owner
+10/12/2023 / 2 horas / configurar módulo / finalizando do módulo de tela principal 
+10/12/2023 / 1 horas / configurar módulo / finalizando o pop-up
+
