@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import Navbar from "../Components/Navbar";
+import ApiProdutos from '../service/produtos'
+import { PratosContext } from "../providers/PratosContext";
+
 
 //página referente às historietas EU10 e EU11 
 
@@ -8,7 +11,27 @@ export function OwnerPage() {
   const [isAddDishMenuVisible, setIsAddDishMenuVisible] = useState(false);
   const [isRemoveDishMenuVisible, setIsRemoveDishMenuVisible] = useState(false);
   const [isEditDishMenuVisible,setIsEditDishMenuVisible] = useState(false);
+  const [isDishDayMenuVisible, setIsDishDayMenuVisible] = useState(false);
 
+  const [produtos,setProdutos] = useState([])
+  const {pratosDia, setPratosDia} = useContext(PratosContext)
+  console.log(pratosDia)
+  
+  
+
+
+
+  useEffect(() => {
+    //Faz requisição de produtos
+    ApiProdutos.pegaTodosProdutos()
+    .then((produtos) =>{
+      setProdutos(produtos.data)
+    })
+  }, [])
+  
+  const toggleDishDayMenu = () => {
+    setIsDishDayMenuVisible(!isDishDayMenuVisible);
+  }
   const toggleAddDishMenu = () => {
     setIsAddDishMenuVisible(!isAddDishMenuVisible);
   };
@@ -31,6 +54,10 @@ export function OwnerPage() {
 
   const closeEditDishMenu = () =>{
     setIsEditDishMenuVisible(!isEditDishMenuVisible);
+  }
+
+  const closeDishDayMenu = () =>{
+    setIsDishDayMenuVisible(!isDishDayMenuVisible)
   }
   return (
     <>
@@ -72,12 +99,40 @@ export function OwnerPage() {
             <Button onClick={closeEditDishMenu}>Fechar menu</Button>
           </DishMenu>
         )}
-        <Button>Anuncie um prato como "prato do dia"</Button>
+        <ButtonAnc onClick={toggleDishDayMenu}>Anuncie um prato como "prato do dia"</ButtonAnc>
+
+        {isDishDayMenuVisible && (
+          <DishMenu1>
+            <DivProdutos>
+              <h1>Lista de Produtos</h1>
+              <ul>
+                {produtos.map((produto, index) => (
+                  <li key={`${produto.id_produto}_${index}`}>
+                    <button onClick={() => {
+                      if (!pratosDia.some((prato) => prato.id_produto === produto.id_produto)) {
+                        setPratosDia([...pratosDia, produto]);
+                      }
+                    }}>
+                      <strong>{produto.nome_produto}</strong>
+                    </button>
+                  </li>
+                ))}
+              </ul>
+
+            </DivProdutos>
+            <Button onClick={closeDishDayMenu}>Fechar menu</Button>
+          </DishMenu1>
+
+        )}
       </Containerdiv>
+
     </>
   );
 }
 
+const DivProdutos = styled.div`
+
+`
 const Containerdiv = styled.div`
   color: white;
   display: flex;
@@ -98,6 +153,20 @@ const H2 = styled.h2`
   font-style: italic;
 `;
 
+const ButtonAnc = styled.button`
+  position: relative;
+  background-color: #007bff;
+  color: white;
+  padding: 10px;
+  margin-top: 20px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  &:hover {
+    background-color: #0056b3;
+  }
+`;
 const Button = styled.button`
   background-color: #007bff;
   color: white;
@@ -122,6 +191,17 @@ const DishMenu = styled.div`
   padding: 20px;
   border-radius: 8px;
   z-index: 999;
+`;
+
+const DishMenu1 = styled.div`
+  margin-top: 250px;
+  position: absolute;
+  top: 67.9%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #333;
+  padding: 20px;
+  border-radius: 8px;
 `;
 
 const InputBox = styled.input`

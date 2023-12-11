@@ -1,48 +1,39 @@
-import React,{ useState } from 'react';
+import React,{ useContext, useState } from 'react';
 import { styled } from "styled-components";
 import Navbar from "../Components/Navbar";
 import cheeseBurguer from '../Assets/cheessBurgeuer.png'
 import pasta from '../Assets/pasta.png'
 import desert from '../Assets/desert.png'
-//import { useEffect } from "react";
-//import axios from "axios";
-
-//página referente à historieta: EU01
+import { PratosContext } from '../providers/PratosContext';
 
 export function HomePage() {
     const [showDetails,setShowDetails] = useState(false);
+    const {pratosDia} = useContext(PratosContext)
+    console.log(pratosDia)
+
     const handleDetailsClick = () => {
         setShowDetails(true);
     }
     const handleCloseClick=() => {
         setShowDetails(false);
     }
+
+    
+
     return (
         <>
             <Navbar />
             <Container>
                 <ul>
-                    <Prato link={cheeseBurguer} onClick={handleDetailsClick}> {/* Esse prato deve ser uma componente que sera renderizada pleo dados que o back fornecerá */}
-                        <div>
-                            <h1>DUPLO CHEEDAR</h1>
-                            <h2>R$25,00</h2>
-                        </div>
-                        <button >MAIS INFORMAÇÕES</button>
-                    </Prato>
-                    <Prato link={pasta} onClick={handleDetailsClick}> {/* Esse prato deve ser uma componente que sera renderizada pleo dados que o back fornecerá */}
-                        <div>
-                            <h1>MAC CHEESE</h1>
-                            <h2>R$20,00</h2>
-                        </div>
-                        <button >MAIS INFORMAÇÕES</button>
-                    </Prato>
-                    <Prato link={desert} onClick={handleDetailsClick}> {/* Esse prato deve ser uma componente que sera renderizada pleo dados que o back fornecerá */}
-                        <div>
-                            <h1>TORTA DOCE</h1>
-                            <h2>R$10,00</h2>
-                        </div>
-                        <button >MAIS INFORMAÇÕES</button>
-                    </Prato>
+                    {pratosDia.map((pratosDia) => (
+                        <Prato link={pratosDia.url_imagem} > {/* Esse prato deve ser uma componente que sera renderizada pleo dados que o back fornecerá */}
+                            <div>
+                                <h1>{pratosDia.nome_produto}</h1>
+                                <h2>R$ {pratosDia.preco}</h2>
+                            </div>
+                            <button onClick={handleDetailsClick} >MAIS INFORMAÇÕES</button>
+                        </Prato>
+                    ))}
                 </ul>
             </Container>
             {showDetails&&(
@@ -144,12 +135,25 @@ const Container = styled.div`
         display: flex;
         align-items: center;
         justify-content: space-evenly;
+        flex-wrap: wrap;
     }
+    @media (max-width: 1068px) {
+        ul{
+            display: flex;
+            flex-direction: column;
+            margin-top: 300px;
+        }
+      }
+        
+        
+    
 `
 
 const Prato = styled.li`
     div{
         background-image: url(${props => props.link});
+        background-repeat: no-repeat;
+        background-size: cover;
         width: 332px;
         height: 200px;
         display: flex;
@@ -159,6 +163,7 @@ const Prato = styled.li`
         font-weight: 800;
         font-size: 24px;
         letter-spacing: 1.92px;
+        
 
         h1{
             color: #ffffff;
@@ -185,5 +190,8 @@ const Prato = styled.li`
         font-weight: 800;
         letter-spacing: 1.92px;
     }
-    
+    @media (max-width: 1068px) {
+        margin-top: 40px;
+        margin-bottom: 20px;
+    }
 `

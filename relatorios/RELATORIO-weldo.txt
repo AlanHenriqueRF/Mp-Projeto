@@ -1,0 +1,7 @@
+27/11/2023 / 3 horas /  configurar módulo / configuração do módulo de tela principal
+28/11/2023 / 1 horas / estudar conteúdo / Estudo de react
+08/12/2023 / 3 horas / configurar módulo / ajuste no mapa da tela mapa
+08/12/2023 / 30 minutos / configurar módulo / ajuda na criação do pop-up
+09/12/2023 / 20 minutos / estudar conteudo / Integração com backend
+10/12/2023 / 30 minutos / configurar módulo / deixar a tela principal responsiva
+10/12/2023 / 4 horas /  configurar módulo / configurando o botão anunciar pratos da pagina owner
