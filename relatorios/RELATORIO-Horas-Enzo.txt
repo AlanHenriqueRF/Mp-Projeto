@@ -1,0 +1,9 @@
+Relação Total de Horas aproximada
+
+2 Horas - modelando o Banco de Dados / fazendo diagrama entidade Relacionamento
+2 Horas - criando testes e casos de teste para o BackEnd, principalmente para o CRUD.
+3 Horas - Debug do backend
+1 Hora  - Ajudando o Marcelo a criar o CRUD
+2 Horas - Criando funções e rotas específicas para as filtragens por preço e distância
+2 Horas - Povoando o banco de dados
+1 Hora  - Editando o Banco de Dados, tanto tabelas quanto colunas
