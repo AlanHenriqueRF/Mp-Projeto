@@ -1,6 +1,9 @@
 # Projeto MP
 Este é um breve guia para ajudar você a começar com o projeto. Siga as instruções abaixo para configurar e executar o projeto localmente.
 
+Para mais informações, acesse a documentação oficial do projeto:
+https://joaovictorromero.github.io/ff-docs/
+
 # Pré-requisitos
 Antes de começar, certifique-se de ter o Node Version Manager (NVM) instalado em sua máquina.
 
