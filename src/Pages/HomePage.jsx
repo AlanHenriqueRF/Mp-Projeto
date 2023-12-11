@@ -1,4 +1,4 @@
-import React,{ useContext, useState } from 'react';
+import React,{ useContext, useState, useHistory } from 'react';
 import { styled } from "styled-components";
 import Navbar from "../Components/Navbar";
 import cheeseBurguer from '../Assets/cheessBurgeuer.png'
@@ -8,6 +8,7 @@ import { useEffect } from "react";
 import axios from "axios";
 import ApiProdutos from '../service/produtos';
 import { PratosContext } from '../providers/PratosContext';
+import { Link } from 'react-router-dom';
 
 export function HomePage() {
     const [selectedPrato, setSelectedPrato] = useState(null);
@@ -22,7 +23,6 @@ export function HomePage() {
         setSelectedPrato(null);
       };
 
-    
 
     return (
         <>
@@ -51,7 +51,7 @@ export function HomePage() {
                         </div>
                     </Prato>
                     <h2>{selectedPrato.descricao}</h2>
-                    <Button_localizar>Localizar</Button_localizar>
+                    <LinkLocalizar to={`/Mapa/${selectedPrato.fk_id_restaurante}`}>Localizar</LinkLocalizar>
                     <Button_close onClick={handleCloseClick}>X</Button_close>
                 </DetailsMenu>
             )}
@@ -107,7 +107,7 @@ const Button_close = styled.button`
     font-weight: bolder;
     border: none;
 `
-const Button_localizar = styled.button`
+const LinkLocalizar = styled(Link)`
     background-color: #1BF28E;
     padding: 12px 24px;
     border: 0;
