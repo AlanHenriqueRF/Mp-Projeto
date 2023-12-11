@@ -1,0 +1,13 @@
+30/11/2023| 3 horas | estudar aulas e laboratórios relacionados | estudei as ferramentas que serão utilizadas no projeto e linguagens
+
+02/12/2023 | 2 horas | estudar aulas e laboratórios relacionados | estudei as ferramentas que serão utilizadas no projeto e linguagens
+
+03/12/2023 | 5 horas | estudar aulas e laboratórios relacionados | estudei as ferramentas que serão utilizadas no projeto e linguagens
+
+06/12/2023 |1 hr 40 min| fazer diagramas | fiz diagrama casos de uso
+
+07/12/2023 | 4 horas | projetar | projetei design de janelas usando a ferramenta figma
+
+08/12/2023 | 2 hrs 30 min | estudar aulas e laboratórios relacionados | estudei as ferramentas que serão utilizadas no projeto e linguagens em específico a ferramenta react
+
+09/12/2023 |7 horas | revisar projeto/projetar/revisar código do módulo/ alteração do design figma, criação de filtro por restaurante e integração back end com front end para a página busca
