@@ -146,7 +146,7 @@ const Container = styled.div`
     @media (max-width: 1068px) {
         ul{
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             margin-top: 300px;
         }
       }
@@ -159,7 +159,7 @@ const Prato = styled.li`
     div{
         background-image: url(${props => props.link});
         background-repeat: no-repeat;
-        background-size: cover;
+        background-size: 332px 200px;
         width: 332px;
         height: 200px;
         display: flex;
@@ -172,12 +172,22 @@ const Prato = styled.li`
         
 
         h1{
-            color: #ffffff;
+            text-align: center; 
+            color: #FFFFFF;
             margin-top: 24px;
+            font-weight: 900;
+            font-size: 23px;
+            text-shadow: 4px 4px 0 #000;
+
+            
         }
         h2{
-            color:#FFE600;
+            color:#FFFFFF;
             margin-bottom: 21px;
+            font-weight: 900;
+            font-size: 23px;
+            text-shadow: 4px 4px 0 #000;
+            text-align: center; 
         }
 
     }
@@ -195,6 +205,7 @@ const Prato = styled.li`
         font-size: 24px;
         font-weight: 800;
         letter-spacing: 1.92px;
+        margin-bottom: 30px;
     }
     @media (max-width: 1068px) {
         margin-top: 40px;
