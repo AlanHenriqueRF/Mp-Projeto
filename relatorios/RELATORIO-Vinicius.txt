@@ -1,0 +1,31 @@
+dia 13/11 | 1h | estudar aulas e labs relacionados | criando o scrum, 
+kanban, e o servidor do discord, além de estudar os conteúdos das aulas 
+para a melhor aplicação do scrum, kanban, XP e demais metodologias 
+
+dia 15/11 | 2h | projetar | criação das logos e identidade visual do app dia 
+
+dia 20/11 | 4h | codificar módulo | criação de um sistema de mapa para 
+mostrar o caminho até o restaurante (em python)
+
+dia 22/11 | 3h | projetar | reunião com a equipe e decisão de refazer tudo 
+do zero em react
+
+dia 24/11 | 5h | estudar aulas e labs relacionados | estudando javascript e 
+css e vetorização da logo antiga, além da criação de uma nova logo para o 
+projeto 
+
+dia 27/11 | 2h | projetar | criação dos desenhos do mapa da praça 
+de alimentação 
+
+dia 04/12 | 2h | projetar | estudo de ccomo poderia implementar o sistema 
+de localização
+
+dia 06/12 | 3:30h | projetar| reunião com a equipe para definição de como será o 
+projeto e sistema de mapa, que será portado para react, |estudar aulas e labs relacionados| estudar mais sobre como manipular imagens no css
+
+dia 07/12 | 5:25h | estudar aulas e labs relacionados | estudando react e git,| projetar | início da implementação do mapa usando react.
+
+dia 09/12 | 13:20h | codificar módulo | implementação do mapa em react 
+durante um dia inteiro programando com o time
+
+dia 11/12 | 5h | instrumentar verificando a cobertura | verificação e  documentação dos códigos do front-end,| rodar verificador estático e retirar warnings | tentativa de minimizar a quantidade de warnings vindas de problemas nos padrões de codificação, principalmente relacionadas à manipulação de variáveis, | revisar código do módulo | revisar e realizar comentários nos códigos, vinculando-os à respectivas historietas

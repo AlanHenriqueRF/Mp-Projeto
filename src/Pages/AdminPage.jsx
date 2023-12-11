@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import Navbar from "../Components/Navbar";
 
+//página referente às historietas EU08 e EU12
+
 export function AdminPage() {
   const [isAddMenuVisible, setIsAddMenuVisible] = useState(false);
   const [isDeleteMenuVisible, setIsDeleteMenuVisible] = useState(false);

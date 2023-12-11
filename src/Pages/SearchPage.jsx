@@ -5,6 +5,8 @@ import ApiProdutos from '../service/produtos'
 import ApiRestaurantes from "../service/restaurantes"
 import axios from "axios";
 
+//página referente às historietas EU02, EU03, EU04
+
 export function SearchPage() {
   const [value, setValue] = useState('all')
   const [produtos,setProdutos] = useState([])

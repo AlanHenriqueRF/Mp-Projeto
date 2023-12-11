@@ -5,6 +5,8 @@ import ApiProdutos from '../service/produtos'
 import { PratosContext } from "../providers/PratosContext";
 
 
+//página referente às historietas EU10 e EU11 
+
 export function OwnerPage() {
   const [isAddDishMenuVisible, setIsAddDishMenuVisible] = useState(false);
   const [isRemoveDishMenuVisible, setIsRemoveDishMenuVisible] = useState(false);

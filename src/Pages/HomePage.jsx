@@ -4,9 +4,6 @@ import Navbar from "../Components/Navbar";
 import cheeseBurguer from '../Assets/cheessBurgeuer.png'
 import pasta from '../Assets/pasta.png'
 import desert from '../Assets/desert.png'
-import { useEffect } from "react";
-import axios from "axios";
-import ApiProdutos from '../service/produtos';
 import { PratosContext } from '../providers/PratosContext';
 
 export function HomePage() {
@@ -122,10 +119,7 @@ const Button_localizar = styled.button`
         background-color: #18c27d;
     }
 `
-const H1 = styled.div`
-
-
-`
+//const H1 = styled.div``
 
 
 const Container = styled.div`
