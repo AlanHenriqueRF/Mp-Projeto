@@ -12,6 +12,7 @@ export default function Navbar() {
   const toggleDropDown = () => {
     setIsDropDownVisible(!isDropDownVisible);
   };
+  
 
   return (
     <>
@@ -33,8 +34,14 @@ export default function Navbar() {
 
 
         
-        {localStorage.getItem('id_usuario') && localStorage.getItem('funcao') != 'Restaurante' ? <Divsingin><Link to={"/"} onClick={()=>{localStorage.removeItem('id_usuario');
-          localStorage.removeItem('funcao'); location.reload()}}>Logout</Link></Divsingin> : <Divsingin><Link to={"/SingIn"}>Login</Link></Divsingin>}
+        {localStorage.getItem('id_usuario') || localStorage.getItem('id_restaurante') ? 
+        (localStorage.getItem('funcao') === 'Restaurante' ? 
+        <></>:
+        <Divsingin><Link to={"/"} onClick={()=>{localStorage.removeItem('id_usuario');
+        localStorage.removeItem('id_restaurante');
+        localStorage.removeItem('funcao'); location.reload()}}>Logout</Link></Divsingin> 
+        ):<Divsingin><Link to={"/SingIn"}>Login</Link></Divsingin>  
+    }
         
 
         {/* Button to open DropDownProfile */}
