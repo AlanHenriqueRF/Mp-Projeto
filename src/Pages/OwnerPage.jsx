@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import Navbar from "../Components/Navbar";
 
+//página referente às historietas EU10 e EU11 
+
 export function OwnerPage() {
   const [isAddDishMenuVisible, setIsAddDishMenuVisible] = useState(false);
   const [isRemoveDishMenuVisible, setIsRemoveDishMenuVisible] = useState(false);

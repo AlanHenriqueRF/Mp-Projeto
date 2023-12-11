@@ -4,6 +4,8 @@ import { Link, useNavigate } from "react-router-dom"
 import Apiusuarios from "../service/usuarios";
 import ApiRestaurantes from "../service/restaurantes";
 
+//página referente à historieta EU05 
+
 export function SingUpPage() {
     const [showRestaurantFields, setShowRestaurantFields] = useState(false);
     const [name, setName] = useState("")

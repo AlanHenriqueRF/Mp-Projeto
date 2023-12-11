@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import DropDownProfile from "./SubMenu";
 import { NavLink } from 'react-router-dom';
 
+//trecho referente à historieta EU02
 
 export default function Navbar() {
   const [isDropDownVisible, setIsDropDownVisible] = useState(false);

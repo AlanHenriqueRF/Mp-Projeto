@@ -7,6 +7,8 @@ import desert from '../Assets/desert.png'
 //import { useEffect } from "react";
 //import axios from "axios";
 
+//página referente à historieta: EU01
+
 export function HomePage() {
     const [showDetails,setShowDetails] = useState(false);
     const handleDetailsClick = () => {
