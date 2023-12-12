@@ -1,0 +1,8 @@
+Relação Total de Horas aproximada
+
+4 Horas - Construção e estruturação do front-end React
+2 Horas - Contrução da Navbar e das paginas principais que aprincipio seria usada
+4 Horas - Explicando o funcionamento do react, e ajudando os integrantes com o front
+3 Horas - Explicando e exemplificando o funcionamento da integração do front com o back utilizando axios
+2 Hora  - Integando algumas partes do front com o back
+3 Horas - Criando integração do login e cadastro com o back-end
